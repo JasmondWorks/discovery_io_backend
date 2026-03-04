@@ -1,6 +1,12 @@
 import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
-import { IUserEntity, UserRole } from "../../../modules/user/user.entity";
+import {
+  IUserEntity,
+  UserRole,
+  ExperienceLevel,
+  Industry,
+  CoreRole,
+} from "../../../modules/user/user.entity";
 
 export interface IUser extends Omit<IUserEntity, "id">, Document {}
 
@@ -41,9 +47,18 @@ const userSchema = new Schema<IUser>(
       select: false,
     },
     professionalProfile: {
-      industry: String,
-      core_role: String,
-      experience_level: String,
+      industry: {
+        type: String,
+        enum: Object.values(Industry),
+      },
+      core_role: {
+        type: String,
+        enum: Object.values(CoreRole),
+      },
+      experience_level: {
+        type: String,
+        enum: Object.values(ExperienceLevel),
+      },
       key_skills: [String],
       primary_tools: [String],
       daily_responsibilities: [String],
