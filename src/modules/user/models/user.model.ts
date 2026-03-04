@@ -36,6 +36,10 @@ const userSchema = new Schema<IUser>(
       select: false,
     },
     passwordChangedAt: Date,
+    refreshToken: {
+      type: String,
+      select: false,
+    },
     active: {
       type: Boolean,
       default: true,

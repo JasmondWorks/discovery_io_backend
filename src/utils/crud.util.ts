@@ -18,7 +18,7 @@ export interface IBaseRepository<T> {
     searchFields?: string[],
     populate?: any,
   ): Promise<PaginatedResult<T>>;
-  findById(id: string): Promise<T | null>;
+  findById(id: string, select?: string): Promise<T | null>;
   findOne(filter: Record<string, any>, select?: string): Promise<T | null>;
   update(id: string, data: Partial<T>): Promise<T | null>;
   delete(id: string): Promise<boolean>;
@@ -70,8 +70,10 @@ export class MongooseRepository<
     return { data, page, limit, total, totalPages };
   }
 
-  async findById(id: string): Promise<T | null> {
-    return await this._model.findById(id);
+  async findById(id: string, select?: string): Promise<T | null> {
+    const query = this._model.findById(id);
+    if (select) query.select(select);
+    return await query.exec();
   }
 
   async findOne(

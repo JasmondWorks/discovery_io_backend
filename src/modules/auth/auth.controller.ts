@@ -15,24 +15,28 @@ export class AuthController {
 
   public register = catchAsync(async (req: Request, res: Response) => {
     const user = await this.authService.register(req.body);
-    const result = this.authService.createSendToken(user, 201, res);
+    const result = await this.authService.createSendToken(user, 201, res);
     return sendSuccess(res, result, "User registered successfully", 201);
   });
 
   public login = catchAsync(async (req: Request, res: Response) => {
     const user = await this.authService.login(req.body);
-    const result = this.authService.createSendToken(user, 200, res);
+    const result = await this.authService.createSendToken(user, 200, res);
     return sendSuccess(res, result, "Logged in successfully");
   });
 
   public refreshToken = catchAsync(async (req: Request, res: Response) => {
     const token = req.cookies.refreshToken || req.body.refreshToken;
     const user = await this.authService.refresh(token);
-    const result = this.authService.createSendToken(user, 200, res);
+    const result = await this.authService.createSendToken(user, 200, res);
     return sendSuccess(res, result, "Token refreshed successfully");
   });
 
   public logout = catchAsync(async (req: Request, res: Response) => {
+    const token = req.cookies.refreshToken || req.body.refreshToken;
+    if (token) {
+      await this.authService.logout(token);
+    }
     res.cookie("accessToken", "loggedout", {
       expires: new Date(Date.now() + 10 * 1000),
       httpOnly: true,

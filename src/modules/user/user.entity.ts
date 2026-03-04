@@ -35,6 +35,7 @@ export interface IUserEntity {
   role: UserRole;
   password?: string;
   passwordChangedAt?: Date;
+  refreshToken?: string;
   active: boolean;
   createdAt: Date;
   updatedAt: Date;

@@ -13,8 +13,8 @@ export class UserService {
     return await this.repo.findAll(query, {}, ["name", "email"]);
   }
 
-  async getUserById(id: string) {
-    const user = await this.repo.findById(id);
+  async getUserById(id: string, select?: string) {
+    const user = await this.repo.findById(id, select);
     if (!user) throw new AppError("No user found with that ID", 404);
     return user;
   }

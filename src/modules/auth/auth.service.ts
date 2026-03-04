@@ -15,7 +15,7 @@ export class AuthService {
     return jwt.sign({ id }, secret, { expiresIn: expiresIn as any });
   }
 
-  public createSendToken(user: IUser, statusCode: number, res: any) {
+  public async createSendToken(user: IUser, statusCode: number, res: any) {
     const accessToken = this.signToken(
       (user._id as any).toString(),
       config.jwt.accessSecret,
@@ -40,6 +40,10 @@ export class AuthService {
 
     // Remove password from output
     user.password = undefined;
+
+    await this.userService.updateUser((user._id as any).toString(), {
+      refreshToken: refreshToken,
+    });
 
     return {
       accessToken,
@@ -80,11 +84,28 @@ export class AuthService {
 
     try {
       const decoded = jwt.verify(token, config.jwt.refreshSecret) as any;
-      const user = await this.userService.getUserById(decoded.id);
+      const user = await this.userService.getUserById(
+        decoded.id,
+        "+refreshToken",
+      );
       if (!user) throw new AppError("User not found", 401);
+
+      if (user.refreshToken !== token) {
+        throw new AppError("Invalid refresh token", 401);
+      }
+
       return user;
     } catch (err) {
       throw new AppError("Invalid or expired refresh token", 401);
+    }
+  }
+  async logout(token: string) {
+    if (!token) return;
+    try {
+      const decoded = jwt.verify(token, config.jwt.refreshSecret) as any;
+      await this.userService.updateUser(decoded.id, { refreshToken: "" });
+    } catch (err) {
+      // Ignored: token already expired or invalid means nothing to invalidate
     }
   }
 }
