@@ -5,6 +5,7 @@ import { UserRole } from "../../modules/user/user.entity";
 import {
   createUserValidator,
   updateUserValidator,
+  updateProfessionalProfileValidator,
 } from "../../modules/user/user.validator";
 import { validateRequest } from "../../middlewares/validate-request.middleware";
 
@@ -33,6 +34,41 @@ router.use(protect);
  *           application/json:
  *             schema: { $ref: '#/components/schemas/User' }
  */
+/**
+ * @swagger
+ * /user/me/professional-profile:
+ *   patch:
+ *     summary: Update current user's professional profile onboarding information
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               professionalProfile:
+ *                 type: object
+ *                 properties:
+ *                   industry: { type: string, enum: [software_development, design, marketing, content_creation, other] }
+ *                   core_role: { type: string, enum: [software_engineer, graphic_designer, content_writer, product_manager, marketer, other] }
+ *                   experience_level: { type: string, enum: [beginner, intermediate, advanced, expert] }
+ *                   primary_tools: { type: array, items: { type: string } }
+ *                   main_pain_points: { type: array, items: { type: string } }
+ *     responses:
+ *       200:
+ *         description: Professional Profile updated successfully
+ *         content:
+ *           application/json:
+ *             schema: { $ref: '#/components/schemas/User' }
+ */
+router.patch(
+  "/me/professional-profile",
+  updateProfessionalProfileValidator,
+  validateRequest,
+  controller.updateProfessionalProfile,
+);
+
 router.get("/me", controller.getMe);
 
 /**

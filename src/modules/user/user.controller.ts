@@ -41,4 +41,16 @@ export class UserController {
   public getMe = catchAsync(async (req: any, res: Response) => {
     return sendSuccess(res, req.user, "User profile retrieved successfully");
   });
+  public updateProfessionalProfile = catchAsync(
+    async (req: any, res: Response) => {
+      const user = await this.userService.updateUser(req.user.id, {
+        professionalProfile: req.body.professionalProfile,
+      });
+      return sendSuccess(
+        res,
+        user,
+        "Professional Profile updated successfully",
+      );
+    },
+  );
 }
