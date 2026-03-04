@@ -29,6 +29,14 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Routes
 app.use("/api/v1", v1Routes);
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to the Discover IO API!");
+});
+
+app.get("/health", (req: Request, res: Response) => {
+  res.send("OK");
+});
+
 // 404 catch-all
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
