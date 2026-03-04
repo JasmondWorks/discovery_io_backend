@@ -66,10 +66,9 @@ userSchema.pre("save", async function (this: any) {
 });
 
 // Update passwordChangedAt property for the user
-userSchema.pre("save", function (this: any, next: any) {
-  if (!this.isModified("password") || this.isNew) return next();
+userSchema.pre("save", async function (this: any) {
+  if (!this.isModified("password") || this.isNew) return;
   this.passwordChangedAt = new Date(Date.now() - 1000);
-  next();
 });
 
 // Instance method to check if password is correct
