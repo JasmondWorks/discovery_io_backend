@@ -7,7 +7,18 @@ const options: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: { title: "Discover IO API", version: "1.0.0" },
-    servers: [{ url: `http://localhost:${config.port}/api/v1` }],
+    servers: [
+      {
+        url:
+          config.env === "production"
+            ? "https://discovery-io-backend.vercel.app/api/v1"
+            : `http://localhost:${config.port}/api/v1`,
+        description:
+          config.env === "production"
+            ? "Production server"
+            : "Local development server",
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: { type: "http", scheme: "bearer", bearerFormat: "JWT" },
