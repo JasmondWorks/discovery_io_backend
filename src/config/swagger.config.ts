@@ -1,6 +1,8 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import config from "../config/app.config";
 
+import path from "path";
+
 const options: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
@@ -60,7 +62,12 @@ const options: swaggerJSDoc.Options = {
     },
     security: [{ bearerAuth: [] }],
   },
-  apis: ["./src/routes/*.ts", "./src/modules/**/*.route.ts"],
+  apis: [
+    path.join(__dirname, "../routes/*.ts"),
+    path.join(__dirname, "../routes/*.js"),
+    path.join(__dirname, "../modules/**/*.route.ts"),
+    path.join(__dirname, "../modules/**/*.route.js"),
+  ],
 };
 
 export default swaggerJSDoc(options);
