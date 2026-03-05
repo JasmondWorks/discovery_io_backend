@@ -17,7 +17,7 @@ connectToDatabase();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: true, // Reflects the request origin, allowing any origin
     credentials: true,
   }),
 );
