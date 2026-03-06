@@ -31,6 +31,17 @@ export const NormalizationSchemas: Record<string, any> = {
     main_pain_points: "array of strings",
     detailed_context: "string summary of their work environment and goals",
   },
+  chat_intent: {
+    user_persona: "string (e.g., Senior Backend Dev)",
+    core_task: "string (e.g., Schema Migration)",
+    success_criteria: "string (e.g., Must support SQL export)",
+    is_clarification_needed: "boolean",
+  },
+  tool_recommendation: {
+    recommended_tools:
+      "array of objects { name: 'string', rationale: 'string explaining why this tool fits the user persona and task' }",
+    message: "string (graceful explanation or introduction)",
+  },
 };
 
 export type SchemaType = keyof typeof NormalizationSchemas;
