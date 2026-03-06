@@ -60,8 +60,12 @@ export class AuthService {
     }
 
     const user = await this.userService.findByEmail(email);
+    if (!user) {
+      throw new AppError("User not found", 404);
+    }
+
     // @ts-ignore
-    if (!user || !(await user.correctPassword(password, user.password))) {
+    if (!(await user.correctPassword(password, user.password))) {
       throw new AppError("Incorrect email or password", 401);
     }
 
@@ -70,6 +74,12 @@ export class AuthService {
 
   async register(data: any) {
     const { name, email, password, role } = data;
+
+    const existingUser = await this.userService.findByEmail(email);
+    if (existingUser) {
+      throw new AppError("User with this email already exists", 400);
+    }
+
     const user = await this.userService.createUser({
       name,
       email,
