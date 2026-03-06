@@ -51,10 +51,12 @@ export class ChatController {
       
       Instructions: 
       1. Provide a comprehensive response using ONLY the data provided above.
-      2. Recommended Tools: Up to 3 tools. For each, MUST include a specific comparison against other available tools in the context.
-      3. Recommended Workflows: Up to 2. For each, MUST explain specific efficiency or speed advantages.
-      4. Recommended Solutions: Up to 2. For each, MUST explain why this fix is more optimal than others.
-      5. Tradeoff Analysis: A final deep-dive summary comparing these categories against each other.
+      2. Recommended Tools: Up to 3. For each, MUST include:
+         - A specific comparison against other tools.
+         - Scores (0-100) for Usefulness, Relevance, and Reliability based on the user's intent.
+      3. Recommended Workflows: Up to 2. Explain efficiency/speed advantages.
+      4. Recommended Solutions: Up to 2. Explain why this fix is optimal.
+      5. Tradeoff Analysis: A final deep-dive summary.
       
       If nothing in the database matches the user's need, explain gracefully.
     `;
@@ -73,6 +75,7 @@ export class ChatController {
       aiResponseText += `### 🛠️ Recommended Tools\n`;
       advice.recommended_tools.forEach((t: any) => {
         aiResponseText += `- **${t.name}**: ${t.rationale}\n`;
+        aiResponseText += `  *Scores:* ⭐ Usefulness: **${t.usefulness_score}%** | 🎯 Relevance: **${t.relevance_score}%** | 🛡️ Reliability: **${t.reliability_score}%**\n`;
         if (t.comparison_vs_alternatives) {
           aiResponseText += `  *Comparison:* ${t.comparison_vs_alternatives}\n`;
         }

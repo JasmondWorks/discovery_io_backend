@@ -41,7 +41,7 @@ export const NormalizationSchemas: Record<string, any> = {
     message:
       "string (graceful explanation, empathetic introduction to the user's problem)",
     recommended_tools:
-      "array of objects { name: 'string', rationale: 'string explaining why this tool fits', comparison_vs_alternatives: 'string explaining why this is better than other database tools for this specific persona' }",
+      "array of objects { name: 'string', rationale: 'string explaining why this tool fits', usefulness_score: 'number (0-100)', relevance_score: 'number (0-100)', reliability_score: 'number (0-100)', comparison_vs_alternatives: 'string explaining why this is better than other database tools for this specific persona' }",
     recommended_workflows:
       "array of objects { title: 'string', steps: 'array of strings', advantages_of_this_workflow: 'string explaining specific efficiency gains over manual or standard methods' }",
     recommended_solutions:

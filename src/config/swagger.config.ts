@@ -109,6 +109,53 @@ const options: swaggerJSDoc.Options = {
             recommended_tools: { type: "array", items: { type: "string" } },
           },
         },
+        ExpertAdvice: {
+          type: "object",
+          properties: {
+            message: { type: "string" },
+            recommended_tools: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  name: { type: "string" },
+                  rationale: { type: "string" },
+                  usefulness_score: { type: "number" },
+                  relevance_score: { type: "number" },
+                  reliability_score: { type: "number" },
+                  comparison_vs_alternatives: { type: "string" },
+                },
+              },
+            },
+            recommended_workflows: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  title: { type: "string" },
+                  steps: { type: "array", items: { type: "string" } },
+                  advantages_of_this_workflow: { type: "string" },
+                },
+              },
+            },
+            recommended_solutions: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  issue_title: { type: "string" },
+                  cause_explanation: { type: "string" },
+                  resolution_steps: {
+                    type: "array",
+                    items: { type: "string" },
+                  },
+                  why_this_fix_is_optimal: { type: "string" },
+                },
+              },
+            },
+            tradeoff_analysis: { type: "string" },
+          },
+        },
       },
     },
     security: [{ bearerAuth: [] }],
