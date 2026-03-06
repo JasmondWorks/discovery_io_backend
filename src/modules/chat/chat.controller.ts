@@ -6,6 +6,8 @@ import { AuthenticatedRequest } from "../../middlewares/auth.middleware";
 import { ChatRole } from "./chat.entity";
 import { NormalizationService } from "../normalization/normalization.service";
 import Tool from "../tool/models/tool.model";
+import Workflow from "../workflow/models/workflow.model";
+import Solution from "../solution/models/solution.model";
 
 export class ChatController {
   private chatService: ChatService;
@@ -27,37 +29,93 @@ export class ChatController {
       schemaType: "chat_intent",
     });
 
-    // 2. Fetch all verified tools from the database to restrict recommendations
-    const availableTools = await Tool.find(
-      {},
-      "name description verified_use_cases platform",
-    );
+    // 2. Fetch all verified assets from the database to restrict recommendations
+    const [availableTools, availableWorkflows, availableSolutions] =
+      await Promise.all([
+        Tool.find({}, "name description verified_use_cases platform"),
+        Workflow.find({}, "title description steps use_cases"),
+        Solution.find(
+          {},
+          "issue_title description resolution_steps tags tradeoffs cause_explanation",
+        ),
+      ]);
 
-    // 3. Structure the prompt to force the AI to only select from DB tools
-    const recommendationPrompt = `
+    // 3. Structure the prompt to force the AI to select from DB assets
+    const expertPrompt = `
       User Intent: ${JSON.stringify(intent)}
-      Available Database Tools: ${JSON.stringify(availableTools)}
       
-      Instructions: Return up to 3 tools from the "Available Database Tools" that best match the User Intent (user_persona, core_task, success_criteria). 
-      If no tools fit the criteria decently well, return an empty array for recommended_tools and explain why gracefully in the message. 
-      Only return tools strictly present in the provided list.
+      CONTEXT FROM DATABASE:
+      - Available Tools: ${JSON.stringify(availableTools)}
+      - Available Workflows: ${JSON.stringify(availableWorkflows)}
+      - Available Solutions: ${JSON.stringify(availableSolutions)}
+      
+      Instructions: 
+      1. Provide a comprehensive response using ONLY the data provided above.
+      2. Recommended Tools: Up to 3 tools. For each, MUST include a specific comparison against other available tools in the context.
+      3. Recommended Workflows: Up to 2. For each, MUST explain specific efficiency or speed advantages.
+      4. Recommended Solutions: Up to 2. For each, MUST explain why this fix is more optimal than others.
+      5. Tradeoff Analysis: A final deep-dive summary comparing these categories against each other.
+      
+      If nothing in the database matches the user's need, explain gracefully.
     `;
 
-    // 4. Extract specific tooling recommendations dynamically
-    const recommendation = await this.normalizationService.normalizeInput({
-      input: recommendationPrompt,
-      schemaType: "tool_recommendation",
+    // 4. Extract structured expert advice
+    const advice = await this.normalizationService.normalizeInput({
+      input: expertPrompt,
+      schemaType: "expert_advice",
     });
 
-    // 5. Format response message for storage
-    let aiResponseText = `${recommendation.message}\n\n`;
-    if (
-      recommendation.recommended_tools &&
-      recommendation.recommended_tools.length > 0
-    ) {
-      recommendation.recommended_tools.forEach((t: any) => {
+    // 5. Format comprehensive response message
+    let aiResponseText = `${advice.message}\n\n`;
+
+    // Tools Section
+    if (advice.recommended_tools?.length > 0) {
+      aiResponseText += `### 🛠️ Recommended Tools\n`;
+      advice.recommended_tools.forEach((t: any) => {
         aiResponseText += `- **${t.name}**: ${t.rationale}\n`;
+        if (t.comparison_vs_alternatives) {
+          aiResponseText += `  *Comparison:* ${t.comparison_vs_alternatives}\n`;
+        }
       });
+      aiResponseText += `\n`;
+    }
+
+    // Workflows Section
+    if (advice.recommended_workflows?.length > 0) {
+      aiResponseText += `### 🔄 Recommended Workflows\n`;
+      advice.recommended_workflows.forEach((w: any) => {
+        aiResponseText += `#### ${w.title}\n`;
+        if (w.advantages_of_this_workflow) {
+          aiResponseText += `*Efficiency Gain:* ${w.advantages_of_this_workflow}\n\n`;
+        }
+        w.steps.forEach((step: string, idx: number) => {
+          aiResponseText += `${idx + 1}. ${step}\n`;
+        });
+        aiResponseText += `\n`;
+      });
+    }
+
+    // Solutions Section
+    if (advice.recommended_solutions?.length > 0) {
+      aiResponseText += `### 💡 Solutions to Common Issues\n`;
+      advice.recommended_solutions.forEach((s: any) => {
+        aiResponseText += `#### ${s.issue_title}\n`;
+        aiResponseText += `*Cause:* ${s.cause_explanation}\n`;
+        if (s.why_this_fix_is_optimal) {
+          aiResponseText += `*Expert Choice:* ${s.why_this_fix_is_optimal}\n`;
+        }
+        aiResponseText += `\n*Resolution Steps:*\n`;
+        s.resolution_steps.forEach((step: string, idx: number) => {
+          aiResponseText += `${idx + 1}. ${step}\n`;
+        });
+        aiResponseText += `\n`;
+      });
+    }
+
+    // Tradeoffs Section
+    if (advice.tradeoff_analysis) {
+      aiResponseText += `### ⚖️ Tradeoff Analysis & Expert Insights\n`;
+      aiResponseText += `${advice.tradeoff_analysis}\n`;
     }
 
     const aiMessage = await this.chatService.addMessage(

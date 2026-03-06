@@ -37,10 +37,17 @@ export const NormalizationSchemas: Record<string, any> = {
     success_criteria: "string (e.g., Must support SQL export)",
     is_clarification_needed: "boolean",
   },
-  tool_recommendation: {
+  expert_advice: {
+    message:
+      "string (graceful explanation, empathetic introduction to the user's problem)",
     recommended_tools:
-      "array of objects { name: 'string', rationale: 'string explaining why this tool fits the user persona and task' }",
-    message: "string (graceful explanation or introduction)",
+      "array of objects { name: 'string', rationale: 'string explaining why this tool fits', comparison_vs_alternatives: 'string explaining why this is better than other database tools for this specific persona' }",
+    recommended_workflows:
+      "array of objects { title: 'string', steps: 'array of strings', advantages_of_this_workflow: 'string explaining specific efficiency gains over manual or standard methods' }",
+    recommended_solutions:
+      "array of objects { issue_title: 'string', cause_explanation: 'string', resolution_steps: 'array of strings', why_this_fix_is_optimal: 'string comparing this solution against temporary patches or other common fixes' }",
+    tradeoff_analysis:
+      "string (comprehensive deep-dive summary comparing all recommendations, discussing speed vs. cost, security vs. convenience, and scalability tradeoffs to empower the user's decision)",
   },
 };
 

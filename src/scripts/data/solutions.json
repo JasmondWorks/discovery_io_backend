@@ -1,0 +1,56 @@
+[
+  {
+    "issue_title": "CORS Policy Error between Frontend App and Backend API",
+    "description": "Cross-Origin Resource Sharing policy blocks a web application running at one origin (domain) from accessing resources from a different origin.",
+    "tags": ["cors", "express", "backend", "api", "react"],
+    "cause_explanation": "By default, browsers restrict cross-origin HTTP requests initiated from scripts for security reasons. Your frontend (e.g., localhost:3000) is attempting to access a backend API (e.g., localhost:8000) which the backend server hasn't explicitly allowed.",
+    "resolution_steps": [
+      "1. Install the `cors` package: `npm install cors`",
+      "2. Import it into your main Express app: `import cors from 'cors'`.",
+      "3. Configure it robustly: `app.use(cors({ origin: 'http://localhost:3000', credentials: true }))`.",
+      "4. If using Vercel, ensure `Access-Control-Allow-Origin` headers are set in `vercel.json`."
+    ],
+    "tradeoffs": "Using `origin: '*'` is the easiest fix but is extremely dangerous for production APIs as it opens your endpoints to any site. Always whitelist specific domains.",
+    "recommended_tools": ["Express", "Vercel"]
+  },
+  {
+    "issue_title": "Hydration Mismatch in React/Next.js",
+    "description": "A mismatch occurs between the HTML rendered on the server and the DOM tree rendered initially by React on the client.",
+    "tags": ["react", "nextjs", "frontend", "ssr", "hydration"],
+    "cause_explanation": "React expects the server-rendered HTML and the first client-rendered pass to be identical. If a component relies on `window` (which only exists on the client) or uses dynamic current time during initial render, this sync breaks.",
+    "resolution_steps": [
+      "1. Avoid rendering time-dependent data (like `new Date()`) directly in JSX during the first render.",
+      "2. For client-side only logic, use `useEffect` to trigger a state update that reveals the component or data. Example: `const [mounted, setMounted] = useState(false); useEffect(() => setMounted(true), []); if(!mounted) return null;`",
+      "3. In Next.js, dynamically import components that actively use `window` with `{ ssr: false }`."
+    ],
+    "tradeoffs": "Using `{ ssr: false }` disables SEO benefits for that component because its content isn't present in the initial HTML. Use it only for highly interactive or truly non-SEO pieces (like interactive charts).",
+    "recommended_tools": ["Next.js", "React"]
+  },
+  {
+    "issue_title": "JSON Web Token (JWT) Expiration Handling without Forced Logouts",
+    "description": "Users are randomly logged out because their short-lived access tokens expire while they are actively using the application.",
+    "tags": ["authentication", "security", "jwt", "backend", "frontend"],
+    "cause_explanation": "Access tokens are meant to be short-lived for security (e.g., 15 minutes). If there is no mechanism to silently refresh them, the API rejects them upon expiry.",
+    "resolution_steps": [
+      "1. Implement two tokens: Access Token (short-lived, ~15m) and Refresh Token (long-lived, ~7d).",
+      "2. Send the Access Token in standard JSON payloads or Auth Headers. Set the Refresh Token as an `HttpOnly` secure cookie.",
+      "3. On your Backend `/refresh` endpoint, validate the Refresh Token cookie. If valid, issue a new Access Token payload.",
+      "4. Front-end Axios interceptor: Intercept `401 Unauthorized`. If triggered, cleanly pause requests, call the `/refresh` endpoint, attach the new Access Token, and retry the failed requests instantly."
+    ],
+    "tradeoffs": "Storing Access Tokens in memory is safest against XSS, but refreshes must happen perfectly. Storing them in localStorage guarantees survival across tabs, but exposes you heavily to malicious XSS script extraction.",
+    "recommended_tools": ["JWT", "Express", "React", "Axios"]
+  },
+  {
+    "issue_title": "Choosing Between Vercel Serverless vs Dedicated VPS Deployment",
+    "description": "Developers often get trapped trying to scale monolithic Node deployments on serverless architectures, leading to timeouts.",
+    "tags": ["deployment", "devops", "vercel", "aws", "docker"],
+    "cause_explanation": "Serverless (Vercel, Netlify functions) spins down to zero. Cold starts create temporary lag, and maximum execution limits (10-60s) instantly kill long-running jobs like large video processing or massive AI model generation.",
+    "resolution_steps": [
+      "1. If your API responses are purely CRUD JSON fetching (<2s) -> Vercel/Serverless is ideal and highly scalable automatically.",
+      "2. If your endpoints do heavy image processing, long-running AI streaming, or WebSocket live-chats -> You must extract these into a separate Express/Fastify API running on a VPS (Render, Railway, AWS EC2, DigitalOcean).",
+      "3. You can run Next.js on Vercel handling pure UI/Routing, while API calls proxy proxy to your dedicated backend instance."
+    ],
+    "tradeoffs": "Serverless is zero-maintenance but severely restricted by execution time and specific Node environments. A custom VPS using Docker provides absolute freedom and persistent memory, but forces you to handle scale, updates, and load balancing natively.",
+    "recommended_tools": ["Vercel", "Docker", "Render", "Railway"]
+  }
+]

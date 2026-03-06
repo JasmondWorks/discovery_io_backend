@@ -1,0 +1,78 @@
+[
+  {
+    "title": "Fullstack Next.js 14 Application Authentication with NextAuth",
+    "description": "Standard approach for securing an entire Next.js App Router application leveraging server actions, iron-session, or NextAuth (Auth.js) securely.",
+    "complexity": "Intermediate",
+    "use_cases": ["authentication", "nextjs", "react", "security"],
+    "steps": [
+      "1. Install `next-auth@beta` for Next.js 14.",
+      "2. Create the `auth.ts` configuration file exporting auth, handlers, signIn, signOut.",
+      "3. Create the route handler in `app/api/auth/[...nextauth]/route.ts`.",
+      "4. Setup a DB adapter (e.g. PrismaAdapter) if using Magic Links or Credentials.",
+      "5. Protect specific routes using Middleware (matching routes like `/dashboard/:path*`).",
+      "6. Retrieve session dynamically in Server Components using `await auth()`.",
+      "7. Use `<SessionProvider>` only if accessing session frequently on the Client."
+    ],
+    "recommended_tools": ["Vercel", "Prisma", "Next.js"]
+  },
+  {
+    "title": "OAuth and Magic Links for React + Node.js/Express Backend",
+    "description": "Building a custom authentication system for a separated React SPA and Express Backend using Passport.js or a third-party service like Clerk/Supabase.",
+    "complexity": "Advanced",
+    "use_cases": ["authentication", "react", "express", "node"],
+    "steps": [
+      "1. Decide whether to build natively (Passport.js/JWT) or use a managed service (Clerk/Supabase).",
+      "2. For managed: Install Clerk SDKs on both frontend (`@clerk/clerk-react`) and backend (`@clerk/clerk-sdk-node`).",
+      "3. Wrap React App with `<ClerkProvider>`.",
+      "4. Protect React routes using `<SignedIn>` and `<SignedOut>` components.",
+      "5. On the Express backend, apply the Clerk `requireAuth` middleware to restricted endpoints.",
+      "6. Pass the Authorization header containing the specific active session token from React."
+    ],
+    "recommended_tools": ["Clerk", "Supabase", "React", "Express"]
+  },
+  {
+    "title": "CI/CD Pipeline Setup for Frontend Apps via GitHub Actions",
+    "description": "A workflow for building, testing, and deploying frontend apps automatically.",
+    "complexity": "Intermediate",
+    "use_cases": ["devops", "ci_cd", "deployment", "github"],
+    "steps": [
+      "1. Create a `.github/workflows/deploy.yml` file.",
+      "2. Define triggers: `on: push: branches: [ main ]`.",
+      "3. Set up the environment using `actions/setup-node`.",
+      "4. Add a step to run `npm ci` and `npm test`.",
+      "5. Add a step to run `npm run build`.",
+      "6. Use an action like `peaceiris/actions-gh-pages` or explicitly deploy to Vercel/Netlify via their CLI integrations."
+    ],
+    "recommended_tools": ["GitHub", "Vercel", "Netlify"]
+  },
+  {
+    "title": "Designing a Scalable Design System in Figma",
+    "description": "Workflow for designing, testing, and scaling a fully-fledged design system using Figma variables and auto-layout.",
+    "complexity": "Advanced",
+    "use_cases": ["design", "figma", "ui_ux", "design_system"],
+    "steps": [
+      "1. Establish foundational tokens (colors, typography scales, spacing variables).",
+      "2. Create atomic components (buttons, inputs) heavily utilizing Auto Layout.",
+      "3. Build variants for interactive states (hover, active, disabled).",
+      "4. Leverage Figma's Component Properties to reduce structural duplication.",
+      "5. Create larger organism components combining atomic pieces.",
+      "6. Publish the library and document usage heavily."
+    ],
+    "recommended_tools": ["Figma", "Storybook"]
+  },
+  {
+    "title": "End-to-end Testing with Playwright",
+    "description": "Process for writing and executing robust, resilient E2E tests for web applications.",
+    "complexity": "Intermediate",
+    "use_cases": ["testing", "qa", "software_engineering"],
+    "steps": [
+      "1. Install Playwright via `npm init playwright@latest`.",
+      "2. Configure `playwright.config.ts` targeting necessary browsers and base URLs.",
+      "3. Write tests focusing on user-flow rather than implementation details.",
+      "4. Utilize Playwright's Codegen feature to quickly map out user steps.",
+      "5. Run tests locally and debug using the `--ui` or `--debug` flags.",
+      "6. Integrate Playwright into your CI/CD pipeline."
+    ],
+    "recommended_tools": ["Playwright", "GitHub Actions"]
+  }
+]
