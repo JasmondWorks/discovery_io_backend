@@ -61,7 +61,7 @@ const router = Router();
  */
 router.post(
   "/",
-  //   protect,
+  protect,
   normalizeValidator,
   validateRequest,
   controller.normalize,
@@ -114,10 +114,10 @@ router.post(
  *                 message: { type: string }
  *       401:
  *         description: Unauthorized
- */
+ * */
 router.post(
   "/profession",
-  // protect,
+  protect,
   professionValidator,
   validateRequest,
   controller.normalizeProfession,
