@@ -11,6 +11,16 @@ import solutionRoutes from "../modules/solution/solution.route";
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Health check endpoint
+ *     tags: [System]
+ *     responses:
+ *       200:
+ *         description: Server is up and running
+ */
 // Health check
 router.get("/health", (_, res) => {
   res.status(200).json({ ok: true });

@@ -30,14 +30,36 @@ const options: swaggerJSDoc.Options = {
             id: { type: "string" },
             name: { type: "string" },
             email: { type: "string" },
-            role: { type: "string", enum: ["user", "admin", "super-admin"] },
+            role: { type: "string", enum: ["USER", "ADMIN", "SUPER_ADMIN"] },
             active: { type: "boolean" },
             professionalProfile: {
               type: "object",
               properties: {
-                industry: { type: "string" },
-                core_role: { type: "string" },
-                experience_level: { type: "string" },
+                industry: {
+                  type: "string",
+                  enum: [
+                    "software_development",
+                    "design",
+                    "marketing",
+                    "content_creation",
+                    "other",
+                  ],
+                },
+                core_role: {
+                  type: "string",
+                  enum: [
+                    "software_engineer",
+                    "graphic_designer",
+                    "content_writer",
+                    "product_manager",
+                    "marketer",
+                    "other",
+                  ],
+                },
+                experience_level: {
+                  type: "string",
+                  enum: ["beginner", "intermediate", "advanced", "expert"],
+                },
                 key_skills: { type: "array", items: { type: "string" } },
                 primary_tools: { type: "array", items: { type: "string" } },
                 daily_responsibilities: {
@@ -107,6 +129,51 @@ const options: swaggerJSDoc.Options = {
             resolution_steps: { type: "array", items: { type: "string" } },
             tradeoffs: { type: "string" },
             recommended_tools: { type: "array", items: { type: "string" } },
+          },
+        },
+        Bookmark: {
+          type: "object",
+          properties: {
+            id: { type: "string" },
+            user_id: { type: "string" },
+            tool_id: { type: "string", nullable: true },
+            tool_name: { type: "string" },
+            tool_description: { type: "string" },
+            tool_url: { type: "string" },
+            createdAt: { type: "string", format: "date-time" },
+          },
+        },
+        ChatSession: {
+          type: "object",
+          properties: {
+            id: { type: "string" },
+            user_id: { type: "string" },
+            title: { type: "string" },
+            createdAt: { type: "string", format: "date-time" },
+          },
+        },
+        ChatMessage: {
+          type: "object",
+          properties: {
+            id: { type: "string" },
+            chat_session_id: { type: "string" },
+            role: { type: "string", enum: ["user", "assistant", "system"] },
+            content: {
+              oneOf: [
+                { type: "string" },
+                { $ref: "#/components/schemas/ExpertAdvice" },
+              ],
+            },
+            createdAt: { type: "string", format: "date-time" },
+          },
+        },
+        ChatIntent: {
+          type: "object",
+          properties: {
+            user_persona: { type: "string" },
+            core_task: { type: "string" },
+            success_criteria: { type: "string" },
+            is_clarification_needed: { type: "boolean" },
           },
         },
         ExpertAdvice: {
