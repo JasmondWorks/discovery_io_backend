@@ -1,0 +1,665 @@
+[
+  {
+    "name": "ChatGPT",
+    "description": "Advanced conversational AI widely used for coding, writing, and analysis workflows.",
+    "url": "https://chat.openai.com",
+    "pricing": "Freemium",
+    "platform": "Web, iOS, Android",
+    "verified_use_cases": [
+      "writing",
+      "coding",
+      "brainstorming",
+      "data_analysis"
+    ]
+  },
+  {
+    "name": "Claude 3.5 Sonnet",
+    "description": "Highly capable AI by Anthropic with Artifacts UI, ideal for long-context understanding, rapid prototyping, and natural writing.",
+    "url": "https://claude.ai",
+    "pricing": "Freemium",
+    "platform": "Web, iOS",
+    "verified_use_cases": [
+      "writing",
+      "coding",
+      "software_engineering",
+      "analysis"
+    ]
+  },
+  {
+    "name": "Midjourney",
+    "description": "Highly photorealistic text-to-image AI built directly inside Discord channels.",
+    "url": "https://midjourney.com",
+    "pricing": "Paid",
+    "platform": "Discord",
+    "verified_use_cases": [
+      "design",
+      "image_generation",
+      "mockups",
+      "illustrations"
+    ]
+  },
+  {
+    "name": "GitHub Copilot",
+    "description": "Your AI pair programmer that provides autocomplete-style suggestions as you code.",
+    "url": "https://github.com/features/copilot",
+    "pricing": "Paid",
+    "platform": "VS Code, JetBrains, Web",
+    "verified_use_cases": ["coding", "debugging", "software_engineering"]
+  },
+  {
+    "name": "Notion AI",
+    "description": "Integrated AI to help you write, summarize, and brainstorm right inside your workspace.",
+    "url": "https://www.notion.so/product/ai",
+    "pricing": "Paid",
+    "platform": "Web, Desktop, Mobile",
+    "verified_use_cases": ["writing", "project_management", "content_creation"]
+  },
+  {
+    "name": "Jasper",
+    "description": "AI tailored exactly for enterprise marketing teams to generate high-converting copy.",
+    "url": "https://www.jasper.ai",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["marketing", "copywriting", "seo_optimization"]
+  },
+  {
+    "name": "Figma AI",
+    "description": "Integrates AI features natively into Figma, accelerating product and UI/UX design.",
+    "url": "https://www.figma.com",
+    "pricing": "Freemium",
+    "platform": "Web, Desktop",
+    "verified_use_cases": ["design", "ui_ux", "prototyping"]
+  },
+  {
+    "name": "Cursor",
+    "description": "An AI-first code editor designed to make programming faster and completely context-aware of your codebase.",
+    "url": "https://cursor.com",
+    "pricing": "Freemium",
+    "platform": "Desktop",
+    "verified_use_cases": ["coding", "software_engineering", "debugging"]
+  },
+  {
+    "name": "Writesonic",
+    "description": "AI writer equipped with SEO optimization specifically for content creators and marketers.",
+    "url": "https://writesonic.com",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["writing", "seo_optimization", "content_creation"]
+  },
+  {
+    "name": "Vercel v0",
+    "description": "Generative UI system by Vercel that converts natural language into ready-to-use React components.",
+    "url": "https://v0.dev",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["coding", "frontend_development", "ui_ux"]
+  },
+  {
+    "name": "Canva Magic Studio",
+    "description": "Makes graphic design highly accessible with one-click AI generative expand, rewrite, and image editing features.",
+    "url": "https://www.canva.com/magic/",
+    "pricing": "Freemium",
+    "platform": "Web, Mobile",
+    "verified_use_cases": ["design", "graphic_design", "marketing_materials"]
+  },
+  {
+    "name": "Perplexity AI",
+    "description": "AI-powered search engine that provides cited, real-time answers rather than just lists of links.",
+    "url": "https://www.perplexity.ai",
+    "pricing": "Freemium",
+    "platform": "Web, Mobile",
+    "verified_use_cases": ["research", "data_analysis", "writing"]
+  },
+  {
+    "name": "Runway Gen-3 Alpha",
+    "description": "Advanced AI video generation platform allowing text-to-video, image-to-video, and advanced video editing workflows.",
+    "url": "https://runwayml.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["video_editing", "content_creation", "marketing"]
+  },
+  {
+    "name": "ElevenLabs",
+    "description": "Industry-leading voice cloning and text-to-speech AI interface with ultra-realistic emotional intonation.",
+    "url": "https://elevenlabs.io",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": [
+      "audio_production",
+      "content_creation",
+      "video_editing"
+    ]
+  },
+  {
+    "name": "Uizard",
+    "description": "Rapid UI design tool used for designing wireframes, mockups, and prototypes in minutes, often from hand-drawn sketches.",
+    "url": "https://uizard.io",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["design", "ui_ux", "prototyping"]
+  },
+  {
+    "name": "Lovable",
+    "description": "Full-stack AI developer platform that writes, tests, and deploys high-quality web applications natively.",
+    "url": "https://lovable.dev",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": [
+      "coding",
+      "software_engineering",
+      "frontend_development"
+    ]
+  },
+  {
+    "name": "Bolt.new",
+    "description": "Instant web development environment inside the browser powered by AI to scaffold entire full-stack apps rapidly.",
+    "url": "https://bolt.new",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["coding", "web_development", "prototyping"]
+  },
+  {
+    "name": "Copy.ai",
+    "description": "GTM AI platform designed to automate sales and marketing workflows like personalized emails and long-form blogs.",
+    "url": "https://www.copy.ai",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["marketing", "copywriting", "sales"]
+  },
+  {
+    "name": "Synthesia",
+    "description": "Create professional videos with AI avatars and voiceovers directly from text without needing a camera.",
+    "url": "https://www.synthesia.io",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["video_editing", "marketing", "education"]
+  },
+  {
+    "name": "Descript",
+    "description": "All-in-one audio and video editor that lets you edit media by simply editing text transcriptions.",
+    "url": "https://www.descript.com",
+    "pricing": "Freemium",
+    "platform": "Desktop",
+    "verified_use_cases": [
+      "video_editing",
+      "audio_production",
+      "content_creation"
+    ]
+  },
+  {
+    "name": "Gamma",
+    "description": "A new medium for presenting ideas using AI to generate slide decks, documents, and webpages purely from natural text.",
+    "url": "https://gamma.app",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["presentations", "design", "marketing"]
+  },
+  {
+    "name": "Relume",
+    "description": "AI-powered site builder primarily focused on assisting Webflow developers in scaffolding massive wireframes.",
+    "url": "https://www.relume.io",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["web_design", "ui_ux", "frontend_development"]
+  },
+  {
+    "name": "Suno",
+    "description": "Generative AI specifically designed to compose highly realistic original music tracks and vocals from text descriptions.",
+    "url": "https://suno.com",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": [
+      "music_production",
+      "audio_production",
+      "content_creation"
+    ]
+  },
+  {
+    "name": "Fathom",
+    "description": "AI meeting assistant that records, transcribes, highlights, and summarizes your Zoom, Teams, and Google Meet calls.",
+    "url": "https://fathom.video",
+    "pricing": "Freemium",
+    "platform": "Web, Desktop",
+    "verified_use_cases": [
+      "productivity",
+      "meeting_management",
+      "project_management"
+    ]
+  },
+  {
+    "name": "Zapier Central",
+    "description": "An AI workspace where you teach bots to work across over 6,000 apps by simply typing out instructions.",
+    "url": "https://zapier.com/central",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["workflow_automation", "productivity", "marketing"]
+  },
+  {
+    "name": "Devin",
+    "description": "First autonomous AI software engineer capable of planning, coding, debugging, and deploying entire projects.",
+    "url": "https://cognition.ai",
+    "pricing": "Extended Trial / Paid",
+    "platform": "Web",
+    "verified_use_cases": ["software_engineering", "coding", "debugging"]
+  },
+  {
+    "name": "Framer AI",
+    "description": "Generate and publish full, responsive websites with professional animations from a text prompt in seconds.",
+    "url": "https://www.framer.com/ai/",
+    "pricing": "Freemium",
+    "platform": "Web, Desktop",
+    "verified_use_cases": ["web_design", "frontend_development", "ui_ux"]
+  },
+  {
+    "name": "Leonardo.ai",
+    "description": "Advanced generative AI tool for creating stunning gaming assets, concept art, and detailed illustrations with complex model fine-tuning.",
+    "url": "https://leonardo.ai",
+    "pricing": "Freemium",
+    "platform": "Web, iOS",
+    "verified_use_cases": ["design", "image_generation", "concept_art"]
+  },
+  {
+    "name": "Luma Dream Machine",
+    "description": "A high-quality AI model built strictly for fast and physically accurate text-to-video and image-to-video generation.",
+    "url": "https://lumalabs.ai/dream-machine",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["video_editing", "3d_modeling", "content_creation"]
+  },
+  {
+    "name": "Otter.ai",
+    "description": "AI transcription service that captures meetings, takes notes in real-time, and generates automated summaries to save massive amounts of time.",
+    "url": "https://otter.ai",
+    "pricing": "Freemium",
+    "platform": "Web, Mobile",
+    "verified_use_cases": ["productivity", "meeting_management", "writing"]
+  },
+  {
+    "name": "Beautiful.ai",
+    "description": "Expert deck designer that leverages artificial intelligence to format presentations automatically as you type out content.",
+    "url": "https://www.beautiful.ai",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["presentations", "design", "marketing"]
+  },
+  {
+    "name": "Opus Clip",
+    "description": "Repurpose long talking videos into viral short-form clips (TikToks, Reels, Shorts) entirely automatically using AI analysis.",
+    "url": "https://www.opus.pro",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["video_editing", "social_media", "content_creation"]
+  },
+  {
+    "name": "Veed.io",
+    "description": "In-browser video editor incorporating AI subtitles, text-to-voice, background noise removal, and eye-tracking correction.",
+    "url": "https://www.veed.io",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["video_editing", "marketing", "content_creation"]
+  },
+  {
+    "name": "Khroma",
+    "description": "AI color tool created specifically for designers. Select colors you like, and it uses AI to generate limitless professional palettes.",
+    "url": "https://www.khroma.co",
+    "pricing": "Free",
+    "platform": "Web",
+    "verified_use_cases": ["design", "graphic_design", "ui_ux"]
+  },
+  {
+    "name": "Superhuman AI",
+    "description": "The fastest email client in the world equipped with an AI that summarizes long threads, drafts replies in your voice, and translates instantly.",
+    "url": "https://superhuman.com",
+    "pricing": "Paid",
+    "platform": "Desktop, iOS, Android",
+    "verified_use_cases": ["productivity", "copywriting", "project_management"]
+  },
+  {
+    "name": "Mem",
+    "description": "AI-powered workspace that auto-organizes your notes, meetings, and data without messy folders, letting you chat with your own knowledge base.",
+    "url": "https://mem.ai",
+    "pricing": "Paid",
+    "platform": "Web, Desktop",
+    "verified_use_cases": ["productivity", "project_management", "research"]
+  },
+  {
+    "name": "Looka",
+    "description": "AI-powered graphic design platform that allows you to generate complete brand kits, logos, and marketing materials instantly.",
+    "url": "https://looka.com",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["design", "branding", "marketing"]
+  },
+  {
+    "name": "Webflow AI",
+    "description": "Natively integrated AI tools within Webflow to generate DOM elements, write CSS, and translate copy on the fly.",
+    "url": "https://webflow.com",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["web_design", "frontend_development", "ui_ux"]
+  },
+  {
+    "name": "GrammarlyGO",
+    "description": "Generative AI directly integrated into Grammarly to compose, rewrite, ideate, and reply based on your specific tone of voice.",
+    "url": "https://www.grammarly.com",
+    "pricing": "Freemium",
+    "platform": "Web, Desktop, Mobile",
+    "verified_use_cases": ["writing", "copywriting", "communication"]
+  },
+  {
+    "name": "Surfer SEO",
+    "description": "AI SEO tool that analyzes SERPs directly against your content editor, providing real-time suggestions to generate purely optimized articles.",
+    "url": "https://surferseo.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["marketing", "seo_optimization", "content_creation"]
+  },
+  {
+    "name": "Adobe Firefly",
+    "description": "Adobe's family of creative generative AI models focusing on safe-for-work image and text effect generation globally integrated into Photoshop.",
+    "url": "https://firefly.adobe.com",
+    "pricing": "Freemium",
+    "platform": "Web, Desktop",
+    "verified_use_cases": ["design", "graphic_design", "image_generation"]
+  },
+  {
+    "name": "Mubert",
+    "description": "An AI-powered music generator that provides original, royalty-free tracks for video creators, developers, and brands.",
+    "url": "https://mubert.com",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": [
+      "music_production",
+      "audio_production",
+      "content_creation"
+    ]
+  },
+  {
+    "name": "Glean",
+    "description": "Enterprise AI search built for workplaces. It searches all your company's data sources completely securely to find absolute answers immediately.",
+    "url": "https://www.glean.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["productivity", "research", "enterprise_search"]
+  },
+  {
+    "name": "Mutiny",
+    "description": "AI marketing tool that dynamically changes website content based on the visitor profile without requiring developers to touch code.",
+    "url": "https://www.mutinyhq.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": [
+      "marketing",
+      "conversion_rate_optimization",
+      "web_development"
+    ]
+  },
+  {
+    "name": "Tabnine",
+    "description": "Private, secure generative AI code assistant tailored explicitly for strictly compliant enterprise engineering teams.",
+    "url": "https://www.tabnine.com",
+    "pricing": "Freemium",
+    "platform": "VS Code, JetBrains",
+    "verified_use_cases": ["coding", "software_engineering", "security"]
+  },
+  {
+    "name": "Rose AI",
+    "description": "Cloud data platform leveraging AI to seamlessly find, clean, visualize, and present complex quantitative data elegantly.",
+    "url": "https://rose.ai",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["data_analysis", "research", "finance"]
+  },
+  {
+    "name": "Phind",
+    "description": "An intelligent search engine specifically aimed at developers, designed to answer deep technical questions with context in mind.",
+    "url": "https://www.phind.com",
+    "pricing": "Freemium",
+    "platform": "Web, VS Code",
+    "verified_use_cases": ["coding", "software_engineering", "research"]
+  },
+  {
+    "name": "Tome",
+    "description": "A radically simple AI storytelling tool leveraging deep learning to craft entire narratives from a simple text prompt.",
+    "url": "https://tome.app",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["presentations", "storytelling", "design"]
+  },
+  {
+    "name": "Codeium",
+    "description": "Modern AI toolkit for developers offering incredibly fast, free tier code completion and chat directly in your IDE.",
+    "url": "https://codeium.com",
+    "pricing": "Freemium",
+    "platform": "VS Code, JetBrains, Web",
+    "verified_use_cases": ["coding", "software_engineering", "debugging"]
+  },
+  {
+    "name": "PlayHT",
+    "description": "Generates clear, consistent AI voiceovers featuring real-time speech generation with deep control over emotional pacing.",
+    "url": "https://play.ht",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": [
+      "audio_production",
+      "video_editing",
+      "content_creation"
+    ]
+  },
+  {
+    "name": "Spline AI",
+    "description": "Design 3D experiences right in the browser utilizing text inputs to instantly generate objects, environments, and complete animations.",
+    "url": "https://spline.design/ai",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["3d_modeling", "design", "ui_ux"]
+  },
+  {
+    "name": "Apollo.io",
+    "description": "GTM platform using AI extensively to prospect leads, draft highly personalized cold emails, and schedule B2B meetings.",
+    "url": "https://www.apollo.io",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["sales", "marketing", "prospecting"]
+  },
+  {
+    "name": "Kite",
+    "description": "Python specific auto-completion tool running directly locally that predicts the rest of your current line in real-time.",
+    "url": "https://www.kite.com",
+    "pricing": "Free",
+    "platform": "Desktop",
+    "verified_use_cases": ["coding", "data_science", "machine_learning"]
+  },
+  {
+    "name": "HeyGen",
+    "description": "Stunningly realistic AI avatar video generator supporting studio-level voice translations for global localized marketing.",
+    "url": "https://www.heygen.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["video_editing", "marketing", "localization"]
+  },
+  {
+    "name": "Krea AI",
+    "description": "Real-time AI generation canvas that allows you to draw on screen and literally see the prompt render in true real-time.",
+    "url": "https://www.krea.ai",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["design", "image_generation", "concept_art"]
+  },
+  {
+    "name": "Galileo AI",
+    "description": "Translates robust text prompts into editable, perfectly organized Figma UI layouts targeting rapid high-fidelity mockups.",
+    "url": "https://www.usegalileo.ai",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["ui_ux", "design", "prototyping"]
+  },
+  {
+    "name": "CapCut CC",
+    "description": "Video editor leveraging deep TikTok AI integrations for brutal one-click captions, body tracking, and speed-ramping.",
+    "url": "https://www.capcut.com",
+    "pricing": "Freemium",
+    "platform": "Desktop, Mobile, Web",
+    "verified_use_cases": ["video_editing", "social_media", "content_creation"]
+  },
+  {
+    "name": "Anyword",
+    "description": "Data-driven AI copywriter heavily focused on strictly optimizing conversion metrics across ad platforms like Meta and Google.",
+    "url": "https://anyword.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["marketing", "copywriting", "advertising"]
+  },
+  {
+    "name": "Wonder Dynamics",
+    "description": "AI tool that automatically animates, lights, and composes a 3D CG character directly into a live-action scene replacing the actor.",
+    "url": "https://wonderdynamics.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["video_editing", "3d_modeling", "vfx"]
+  },
+  {
+    "name": "Raycast",
+    "description": "Mac productivity tool featuring deeply embedded AI to control your local system, write code, and search the web via hotkeys.",
+    "url": "https://www.raycast.com",
+    "pricing": "Freemium",
+    "platform": "Mac",
+    "verified_use_cases": [
+      "productivity",
+      "software_engineering",
+      "workflow_automation"
+    ]
+  },
+  {
+    "name": "Poe",
+    "description": "Aggregator client by Quora allowing fast, API-direct access chatting with GPT-4, Claude 3, Gemini, and thousands of user bots.",
+    "url": "https://poe.com",
+    "pricing": "Freemium",
+    "platform": "Web, iOS, Android",
+    "verified_use_cases": ["research", "writing", "productivity"]
+  },
+  {
+    "name": "Julius AI",
+    "description": "Powerful AI data analyst. Upload Excel or CSV files and prompt it to directly run statistical models, write python, and chart graphs.",
+    "url": "https://julius.ai",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["data_analysis", "finance", "research"]
+  },
+  {
+    "name": "Scribe",
+    "description": "Automatically captures your screen while you work and uses AI to generate beautiful, step-by-step SOP guides instantly.",
+    "url": "https://scribehow.com",
+    "pricing": "Freemium",
+    "platform": "Web, Browser Extension",
+    "verified_use_cases": ["productivity", "documentation", "operations"]
+  },
+  {
+    "name": "Klaviyo AI",
+    "description": "Ecommerce marketing automation utilizing machine learning to accurately predict customer churn and personalize email delivery times.",
+    "url": "https://www.klaviyo.com",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["marketing", "email_marketing", "ecommerce"]
+  },
+  {
+    "name": "Lovo.ai",
+    "description": "Hyper-realistic AI voice generator packed extensively with video editing features heavily built around podcasting and gaming.",
+    "url": "https://lovo.ai",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": [
+      "audio_production",
+      "video_editing",
+      "content_creation"
+    ]
+  },
+  {
+    "name": "Baseten",
+    "description": "Serverless platform to effortlessly deploy and serve custom or open source machine learning models blazing fast.",
+    "url": "https://www.baseten.co",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["software_engineering", "machine_learning", "devops"]
+  },
+  {
+    "name": "Replicate",
+    "description": "Run heavy open-source ML models like Llama and Stable Diffusion flawlessly with just one line of code.",
+    "url": "https://replicate.com",
+    "pricing": "Paid",
+    "platform": "API",
+    "verified_use_cases": ["coding", "software_engineering", "machine_learning"]
+  },
+  {
+    "name": "Tavily",
+    "description": "A search engine optimized explicitly for AI agents, retrieving exceptionally precise internet knowledge reliably for LLMs.",
+    "url": "https://tavily.com",
+    "pricing": "Freemium",
+    "platform": "API",
+    "verified_use_cases": [
+      "software_engineering",
+      "research",
+      "machine_learning"
+    ]
+  },
+  {
+    "name": "Magnific AI",
+    "description": "Incredible image upscaler utilizing generative capabilities to literally add microscopic high-res details to any blurry image.",
+    "url": "https://magnific.ai",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["design", "image_generation", "photography"]
+  },
+  {
+    "name": "Pinecone",
+    "description": "Fully managed vector database designed aggressively to provide blazing long-term memory to AI applications.",
+    "url": "https://www.pinecone.io",
+    "pricing": "Freemium",
+    "platform": "Web, API",
+    "verified_use_cases": [
+      "software_engineering",
+      "machine_learning",
+      "database"
+    ]
+  },
+  {
+    "name": "DALL·E 3",
+    "description": "OpenAI's latest image model focusing purely on extreme prompt-adherence securely embedded inside ChatGPT Plus.",
+    "url": "https://openai.com/dall-e-3",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["design", "illustration", "marketing"]
+  },
+  {
+    "name": "Miro Assist",
+    "description": "Deeply integrated AI inside Miro whiteboards to automatically summarize sticky notes, expand mind maps, and write code.",
+    "url": "https://miro.com/ai/",
+    "pricing": "Freemium",
+    "platform": "Web",
+    "verified_use_cases": ["brainstorming", "productivity", "management"]
+  },
+  {
+    "name": "Typeface",
+    "description": "Extremely personalized generative AI platform designed strictly for enterprise brands to ensure absolutely consistent brand voice.",
+    "url": "https://www.typeface.ai",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["marketing", "copywriting", "branding"]
+  },
+  {
+    "name": "Supercreator",
+    "description": "Mobile app that uses AI to write scripts and act as a teleprompter, letting you shoot up to 10 short form videos an hour.",
+    "url": "https://supercreator.ai",
+    "pricing": "Paid",
+    "platform": "iOS",
+    "verified_use_cases": ["video_editing", "content_creation", "social_media"]
+  },
+  {
+    "name": "Gong",
+    "description": "High-end revenue intelligence AI capturing all sales interactions to deliver precise forecasting and coaching instructions.",
+    "url": "https://www.gong.io",
+    "pricing": "Paid",
+    "platform": "Web",
+    "verified_use_cases": ["sales", "management", "analytics"]
+  }
+]
