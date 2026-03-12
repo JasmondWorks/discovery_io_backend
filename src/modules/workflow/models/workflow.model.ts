@@ -43,6 +43,16 @@ const workflowSchema = new Schema<IWorkflow>(
   },
 );
 
+// Add text index for search
+workflowSchema.index({
+  title: "text",
+  description: "text",
+  use_cases: "text",
+});
+
+// Required by MongoDB to allow $or queries combining $text and other fields
+workflowSchema.index({ use_cases: 1 });
+
 const Workflow = mongoose.model<IWorkflow>("Workflow", workflowSchema);
 
 export default Workflow;

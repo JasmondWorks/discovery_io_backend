@@ -33,6 +33,22 @@ const toolSchema = new Schema<ITool>(
         type: String,
       },
     ],
+    /**
+     * High-level category for the Tools Catalog (PRD Feature 3).
+     * Used to group tools by skill area (e.g. "Design", "Writing", "Development").
+     */
+    category: {
+      type: String,
+    },
+    /**
+     * Role/industry tags for personalized catalog filtering.
+     * Allows GET /tools/for-me to return tools relevant to the user's core role.
+     */
+    tags: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,
@@ -40,6 +56,18 @@ const toolSchema = new Schema<ITool>(
     toObject: { virtuals: true },
   },
 );
+
+// Add text index for search
+toolSchema.index({
+  name: "text",
+  description: "text",
+  category: "text",
+  verified_use_cases: "text",
+  tags: "text",
+});
+
+// Required by MongoDB to allow $or queries combining $text and other fields
+toolSchema.index({ tags: 1 });
 
 const Tool = mongoose.model<ITool>("Tool", toolSchema);
 

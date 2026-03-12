@@ -45,6 +45,15 @@ const userSchema = new Schema<IUser>(
       default: true,
       select: false,
     },
+    /**
+     * Marks whether the user has completed the onboarding flow (PRD Feature 2).
+     * Returned in all auth and profile responses so the frontend can redirect
+     * first-time users to the onboarding screens.
+     */
+    onboardingCompleted: {
+      type: Boolean,
+      default: false,
+    },
     deletedAt: {
       type: Date,
       default: null,

@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { IChatSessionEntity } from "../chat.entity";
+import { IChatSessionEntity, ChatSessionStatus } from "../chat.entity";
 
 export interface IChatSession
   extends Omit<IChatSessionEntity, "id">, Document {}
@@ -15,6 +15,25 @@ const chatSessionSchema = new Schema<IChatSession>(
       type: String,
       required: true,
       default: "New Chat",
+    },
+    /**
+     * Tracks the PRD clarification-flow stage.
+     * Defaults to CLARIFYING so every new session starts with a clarification step.
+     */
+    status: {
+      type: String,
+      enum: Object.values(ChatSessionStatus),
+      default: ChatSessionStatus.CLARIFYING,
+    },
+    /**
+     * Stored after the AI extracts the user's intent during the clarification step.
+     * Used to generate accurate recommendations when the user confirms/corrects.
+     */
+    extracted_intent: {
+      user_persona: { type: String },
+      core_task: { type: String },
+      success_criteria: { type: String },
+      original_query: { type: String },
     },
   },
   {

@@ -14,7 +14,12 @@ export class BookmarkController {
   public saveBookmark = catchAsync(
     async (req: AuthenticatedRequest, res: Response) => {
       const userId = (req.user as any).id;
-      const bookmark = await this.bookmarkService.saveTool(userId, req.body);
+      const { toolId } = req.params;
+
+      const data = { ...req.body };
+      if (toolId) data.tool_id = toolId;
+
+      const bookmark = await this.bookmarkService.saveTool(userId, data);
       return sendSuccess(res, bookmark, "Tool bookmarked successfully", 201);
     },
   );

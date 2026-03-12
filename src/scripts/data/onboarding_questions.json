@@ -1,0 +1,82 @@
+[
+  {
+    "id": "industry",
+    "question": "Which industry do you work in?",
+    "type": "select",
+    "options": [
+      { "value": "software_development", "label": "Software Development" },
+      { "value": "design", "label": "Design" },
+      { "value": "marketing", "label": "Marketing" },
+      { "value": "content_creation", "label": "Content Creation" },
+      { "value": "other", "label": "Other" }
+    ],
+    "mapped_field": "professionalProfile.industry"
+  },
+  {
+    "id": "core_role",
+    "question": "How do you describe your primary role?",
+    "type": "select",
+    "options": [
+      { "value": "software_engineer", "label": "Software Engineer" },
+      { "value": "graphic_designer", "label": "Graphic Designer" },
+      { "value": "content_writer", "label": "Content Writer" },
+      { "value": "product_manager", "label": "Product Manager" },
+      { "value": "marketer", "label": "Marketer" },
+      { "value": "ui_ux_designer", "label": "UI/UX Designer" },
+      { "value": "video_creator", "label": "Video Creator" },
+      { "value": "data_analyst", "label": "Data Analyst" },
+      { "value": "startup_founder", "label": "Startup Founder" },
+      { "value": "developer", "label": "Developer" },
+      { "value": "other", "label": "Other" }
+    ],
+    "mapped_field": "professionalProfile.core_role"
+  },
+  {
+    "id": "experience_level",
+    "question": "What is your experience level with AI tools?",
+    "type": "select",
+    "options": [
+      { "value": "beginner", "label": "Beginner (New to AI)" },
+      { "value": "intermediate", "label": "Intermediate (Regular user)" },
+      { "value": "advanced", "label": "Advanced (Power user)" },
+      { "value": "expert", "label": "Expert (Building with/customizing AI)" }
+    ],
+    "mapped_field": "professionalProfile.experience_level"
+  },
+  {
+    "id": "primary_tools",
+    "question": "Which AI tools have you used before?",
+    "type": "multi-select",
+    "options": [
+      { "value": "ChatGPT", "label": "ChatGPT" },
+      { "value": "Claude", "label": "Claude" },
+      { "value": "Midjourney", "label": "Midjourney" },
+      { "value": "GitHub Copilot", "label": "GitHub Copilot" },
+      { "value": "Cursor", "label": "Cursor" },
+      { "value": "Canva", "label": "Canva Magic Studio" },
+      { "value": "Jasper", "label": "Jasper" },
+      { "value": "Other", "label": "Other" }
+    ],
+    "mapped_field": "professionalProfile.primary_tools"
+  },
+  {
+    "id": "main_pain_points",
+    "question": "What are the common problems you face when using AI tools?",
+    "type": "multi-select",
+    "options": [
+      { "value": "hallucinations", "label": "AI Hallucinations" },
+      { "value": "steep_learning_curve", "label": "Steep Learning Curve" },
+      { "value": "poor_integration", "label": "Doesn't fit my workflow" },
+      { "value": "high_cost", "label": "Too Expensive" },
+      { "value": "lack_of_customization", "label": "Not enough control" }
+    ],
+    "mapped_field": "professionalProfile.main_pain_points"
+  },
+  {
+    "id": "detailed_context",
+    "question": "Tell us more about your typical workflow. What are you trying to achieve?",
+    "type": "text",
+    "placeholder": "e.g. I am a backend developer looking to automate API documentation and testing...",
+    "mapped_field": "professionalProfile.detailed_context"
+  }
+]
