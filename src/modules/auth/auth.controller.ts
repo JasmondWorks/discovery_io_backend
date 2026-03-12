@@ -16,7 +16,12 @@ export class AuthController {
   public register = catchAsync(async (req: Request, res: Response) => {
     const user = await this.authService.register(req.body);
     const result = await this.authService.createSendToken(user, 201, res);
-    return sendSuccess(res, result, "User registered successfully", 201);
+    return sendSuccess(
+      res,
+      { ...result, onboardingCompleted: false },
+      "User registered successfully",
+      201,
+    );
   });
 
   public login = catchAsync(async (req: Request, res: Response) => {

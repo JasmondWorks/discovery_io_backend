@@ -52,5 +52,209 @@
     ],
     "tradeoffs": "Serverless is zero-maintenance but severely restricted by execution time and specific Node environments. A custom VPS using Docker provides absolute freedom and persistent memory, but forces you to handle scale, updates, and load balancing natively.",
     "recommended_tools": ["Vercel", "Docker", "Render", "Railway"]
+  },
+  {
+    "issue_title": "Optimizing AI Image Generation Prompt Adherence",
+    "description": "Users struggle to get the AI to generate images that accurately reflect the complex details in their text prompts.",
+    "tags": ["image_generation", "prompt_engineering", "design", "creative_ai"],
+    "cause_explanation": "Text-to-image models have finite attention spans. If prompts are too long, wordy, or contradictory, the model ignores 'lesser' keywords to focus on the primary subject.",
+    "resolution_steps": [
+      "1. Use weighted prompting: In Midjourney, use `::` to assign importance (e.g. `cyberpunk city::2 neon signs::-0.5`).",
+      "2. Place the most important subject in the first 5 words of the prompt.",
+      "3. Use 'negative prompts' to explicitly exclude elements (e.g. `--no blurry, deformed hands`).",
+      "4. Utilize specialized models in Leonardo.ai or Midjourney targeted at your specific style (e.g. Photorealistic vs 3D Render).",
+      "5. Iterate by starting with 5 words, then adding one piece of detail at a time to see where the model breaks."
+    ],
+    "tradeoffs": "Extremely detailed prompts often limit the model's creative 'flair', resulting in technically accurate but compositionally boring images. Allow some room for AI interpretation.",
+    "recommended_tools": ["Midjourney", "Leonardo.ai", "DALL·E 3"]
+  },
+  {
+    "issue_title": "Reducing AI Chat Hallucinations in Professional Apps",
+    "description": "AI assistants generating factually incorrect information or referencing non-existent features, causing user distrust.",
+    "tags": ["ai_chat", "rag", "knowledge_management", "software_engineering"],
+    "cause_explanation": "LLMs are designed to predict the next word, not to check facts. If they aren't provided with specific context (grounding), they rely on their training data which may be outdated or general.",
+    "resolution_steps": [
+      "1. Implement Retrieval-Augmented Generation (RAG): Only allow the AI to answer based on a specific set of verified documents.",
+      "2. Set Temperature to 0 or 0.1 to minimize the model's randomness and 'creativity'.",
+      "3. Add strict System Prompts: 'If the answer is not in the provided documents, state that you do not know. Do not guess.'",
+      "4. Use a vector database (Pinecone) to store and retrieve high-relevance chunks of your documentation before sending to the AI.",
+      "5. Implement a citation requirement: The AI must link to the specific document it used for its answer."
+    ],
+    "tradeoffs": "RAG increases latency slightly due to the initial document search step and adds complexity to the infrastructure with vector indexing.",
+    "recommended_tools": ["ChatGPT", "Claude", "Pinecone", "Glean"]
+  },
+  {
+    "issue_title": "Scaling AI Video Generation for Social Media Automation",
+    "description": "The high cost and slow generation time of AI videos make it difficult to produce at the volume required for modern social growth.",
+    "tags": [
+      "video_generation",
+      "social_media",
+      "content_creation",
+      "automation"
+    ],
+    "cause_explanation": "Generating 4K AI video is computationally expensive, often taking 5-10 minutes per 10-second clip. Manual editing of these clips further bottlenecks the production pipeline.",
+    "resolution_steps": [
+      "1. Use lower-resolution models for early drafts to save credits and time, upscaling only the final chosen versions.",
+      "2. Repurpose existing long-form video (Webinars, YouTube) into short-form clips using Opus Clip's automated 'magic' selection.",
+      "3. Batch process scripts: AI-generate 50 scripts at once, then feed them into a video generator like HeyGen or Synthesia via API.",
+      "4. Use AI voiceovers (ElevenLabs) to replace manual recording, which can be generated and applied via script automatically.",
+      "5. Automate scheduling using Loomly or Buffer to maintain a 24/7 posting cadence across global time zones."
+    ],
+    "tradeoffs": "High-volume automated video can feel 'robotic' if not carefully reviewed. Ensure a human eye checks at least every 5th clip for brand feel and accuracy.",
+    "recommended_tools": [
+      "Opus Clip",
+      "HeyGen",
+      "Synthesia",
+      "ElevenLabs",
+      "Loomly"
+    ]
+  },
+  {
+    "issue_title": "Improving SEO for AI-Generated Long-Form Articles",
+    "description": "Search engines are flagging or down-ranking large amounts of AI-generated content that lacks 'Personal Experience' (EEAT).",
+    "tags": ["seo", "content_creation", "writing", "marketing"],
+    "cause_explanation": "Google's 2024 updates prioritize content with high 'Experience, Expertise, Authoritativeness, and Trustworthiness' (EEAT). Raw AI output often sounds generic and lacks specific real-world examples.",
+    "resolution_steps": [
+      "1. Use AI (Claude or Jasper) to outline, but write the 'Personal Take' or 'Case Study' sections manually.",
+      "2. Run every AI draft through Surfer SEO to ensure it meets technical keyword density requirements.",
+      "3. Use Hemingway Editor to strip out the verbose 'AI-speak' (e.g. 'In the rapidly evolving landscape...') and make sentences punchy.",
+      "4. Integrate real-time data or research from Perplexity AI to provide evidence that generic models might miss.",
+      "5. Add specific internal links to your other unique assets to prove topical authority to search crawlers."
+    ],
+    "tradeoffs": "Adding human review and technical SEO optimization takes significantly more time than 'one-click' generation, but is the only way to rank long-term.",
+    "recommended_tools": [
+      "Surfer SEO",
+      "Claude",
+      "Perplexity AI",
+      "Hemingway Editor"
+    ]
+  },
+  {
+    "issue_title": "Handling High-Latency AI API Responses in Web Apps",
+    "description": "Users perceive the app as frozen or broken because AI models (especially video/image) take 30s+ to respond to requests.",
+    "tags": ["latency", "software_engineering", "frontend", "ui_ux"],
+    "cause_explanation": "Standard REST request-response cycles time out after 10-30s on many platforms like Vercel. Users expect immediate UI feedback even if the data takes time.",
+    "resolution_steps": [
+      "1. Implement Server-Sent Events (SSE) or WebSockets to stream the AI response word-by-word (available for ChatGPT/Claude).",
+      "2. Use an 'Optimistic UI' approach: Instantly show a detailed 'Generating...' state with progress indicators.",
+      "3. Offload long tasks to a background worker (using BullMQ or temporal.io) and notify the user via webhook/push when done.",
+      "4. For images/video, use a polling mechanism: The API returns a 'Job ID' instantly, and the frontend checks every 3s for the final URL.",
+      "5. Provide intermediate results or 'skeleton' placeholders to give a sense of progress."
+    ],
+    "tradeoffs": "Streaming and background workers significantly increase backend architecture complexity and required server memory.",
+    "recommended_tools": ["Cursor", "Bolt.new", "ChatGPT", "Vercel v0"]
+  },
+  {
+    "issue_title": "Securing Proprietary Data When Using Public AI Models",
+    "description": "Fears of company secrets or personal client data being used to train public AI models (like ChatGPT or Claude).",
+    "tags": ["security", "privacy", "compliance", "software_engineering"],
+    "cause_explanation": "By default, free versions of some AI tools may use user prompts to retrain their models. Professional and Enterprise versions usually guarantee privacy, but must be configured correctly.",
+    "resolution_steps": [
+      "1. Upgrade to Team or Enterprise tiers of OpenAI, Anthropic, or Notion which provide SOCO2 compliance and 'Opt-out of training'.",
+      "2. Use AI via API (OpenRouter or Azure OpenAI) rather than the web interfaces; API data is technically guaranteed to not be used for training by default.",
+      "3. Implement an 'Anonymization Layer' that strips PII (Personal Identifiable Information) from prompts before sending to the LLM.",
+      "4. Host local models (like Llama 3) via Replicate or local GPU servers for the most sensitive reasoning tasks.",
+      "5. Audit third-party AI integrations (extensions/plugins) to ensure they aren't 'leak points' for your data."
+    ],
+    "tradeoffs": "Enterprise tiers can be 5-10x the price of individual Pro subscriptions, and hosting local models requires significant DevOps and hardware overhead.",
+    "recommended_tools": ["ChatGPT", "Claude", "OpenRouter", "Replicate"]
+  },
+  {
+    "issue_title": "Automating Lead Generation Without Getting Marked as Spam",
+    "description": "Automated email outreach triggered by AI is getting blocked by Gmail and Outlook or being sent to the Junk folder.",
+    "tags": ["sales", "marketing", "automation", "outreach"],
+    "cause_explanation": "Email providers detect rapid bursts of similar content. If your AI generates 1,000 versions of the same template, or if you don't 'warm up' your email domain, you get blacklisted.",
+    "resolution_steps": [
+      "1. Use Instantly AI to 'warm up' your email accounts for 14 days before sending any sales emails.",
+      "2. Use Claude to generate 10 unique variations for every single lead, ensuring no two people get the exact same text.",
+      "3. Limit sending to 30-50 emails per day per email account (scaling by adding more accounts, not more volume per account).",
+      "4. Verify every lead's email validity using Apollo.io or specialized verification tools before sending.",
+      "5. Use Spintax (dynamic word replacement) inside your AI-generated templates to increase variance."
+    ],
+    "tradeoffs": "Low-volume, high-personalization outreach is harder to scale but results in 10x higher response rates and protects your domain reputation.",
+    "recommended_tools": ["Instantly AI", "Apollo.io", "Claude", "HubSpot AI"]
+  },
+  {
+    "issue_title": "Synthesizing Professional Meeting Notes from Multi-Speaker Audio",
+    "description": "AI transcription often creates a 'wall of text' that is difficult to read and doesn't clearly assign tasks to the correct individuals.",
+    "tags": ["productivity", "meeting_management", "summarization", "writing"],
+    "cause_explanation": "Basic STT (Speech-to-Text) models struggle with speaker diarization (knowing who is who) and don't understand the 'intent' behind a business conversation.",
+    "resolution_steps": [
+      "1. Use Otter.ai or Fireflies.ai which are specialized in speaker identification and business vocabulary.",
+      "2. Enable Fathom AI to record 'highlights' during the call by clicking a button, which trains the AI on what parts of the call are important.",
+      "3. Ask ChatGPT/Claude to 'Summarize these notes into: 1. Key Decisions, 2. Unresolved Questions, 3. Action Items with Owners'.",
+      "4. Create a prompt template for your meeting style (e.g. Standup vs Discovery) to ensure consistent formatting every time.",
+      "5. Connect the summarized output to Notion AI to automatically create new task database entries."
+    ],
+    "tradeoffs": "Having an 'AI bot' join your meeting can sometimes feel intrusive to clients or external partners. Always ask for permission or use 'Recorder-less' tools like Fathom.",
+    "recommended_tools": [
+      "Otter.ai",
+      "Fireflies.ai",
+      "Fathom",
+      "ChatGPT",
+      "Notion AI"
+    ]
+  },
+  {
+    "issue_title": "Optimizing AI-Powered Financial Scenario Planning",
+    "description": "Financial models often feel 'static' and don't account for the massive variance and unpredictability in startup growth or market shifts.",
+    "tags": ["finance", "analytics", "data_analysis", "startup_founder"],
+    "cause_explanation": "Traditional spreadsheets (Excel) require manual formula updates for every tiny change. AI models can simulate 1,000s of versions of the future, but need to be grounded in real historical data.",
+    "resolution_steps": [
+      "1. Use Causal to replace cell-based logic with variable-based logic (e.g. 'Revenue = Users * Conversion Rate').",
+      "2. Connect your real-time bank or Stripe data via API to ensure your starting 'Burn Rate' is never estimated.",
+      "3. Run 'Monte Carlo' simulations using AI to see the probability of hitting your target under 100 different market conditions.",
+      "4. Use Julius AI to identify 'hidden correlations' between your marketing spend and your long-term customer value (LTV).",
+      "5. Build interactive dashboards in Polymer to show stakeholders the 'What If' impact of hiring more engineers vs spending more on ads."
+    ],
+    "tradeoffs": "Advanced scenario planning can lead to 'Analysis Paralysis', where founders spend too much time modeling and not enough time executing.",
+    "recommended_tools": ["Causal", "Julius AI", "Polymer", "Rose AI"]
+  },
+  {
+    "issue_title": "Reducing Technical Debt in Rapidly Built AI Prototypes",
+    "description": "Prototypes built with AI tools (v0, Bolt, Lovable) often produce messy, monolithic code that is hard for human engineers to maintain later.",
+    "tags": [
+      "software_engineering",
+      "code_generation",
+      "backend_development",
+      "frontend_development"
+    ],
+    "cause_explanation": "AI product builders prioritize 'speed to visual' over 'long-term architecture'. They often bundle styles, logic, and types into single files rather than following clean modular patterns.",
+    "resolution_steps": [
+      "1. Ask the AI tool specifically for 'Modular, component-based code using the Atomic Design pattern'.",
+      "2. Use Cursor's 'Composer' mode to refactor large files into smaller, reusable hooks and components after the initial build.",
+      "3. Explicitly prompt the AI to include Zod or Joi validation for every form and API route to ensure type safety.",
+      "4. Use Sourcegraph Cody to run 'Code Audits' on your prototype to identify where the AI has 'cut corners' on performance.",
+      "5. Implement a strict ESLint and Prettier config early so the AI is forced to follow your specific formatting rules from day one."
+    ],
+    "tradeoffs": "Slowing down to 'architect' the code reduces the speed advantage of using AI product builders. Balance speed for the UI with rigor for the core business logic.",
+    "recommended_tools": [
+      "Cursor",
+      "Sourcegraph Cody",
+      "Vercel v0",
+      "Bolt.new",
+      "Lovable"
+    ]
+  },
+  {
+    "issue_title": "Ensuring Consistency in AI-Generated Marketing Assets",
+    "description": "Marketing images, ad copy, and social posts produced by different AI tools look and sound inconsistent, damaging brand identity.",
+    "tags": ["branding", "marketing", "graphic_design", "copywriting"],
+    "cause_explanation": "Each AI tool (Midjourney, ChatGPT, Jasper) has its own 'default' personality. Without shared brand guidelines, they will drift into generic styles that don't match your company.",
+    "resolution_steps": [
+      "1. Create a centralized 'Brand Bible' document and feed it into the 'Custom Instructions' or 'Knowledge' section of every AI tool.",
+      "2. Use Midjourney's `--sref` (Style Reference) and `--cref` (Character Reference) to ensure all images use the exact same color and subject.",
+      "3. Use Typeface.ai for enterprise content, as it is specifically designed to train on your unique brand voice and never deviate.",
+      "4. Create a master prompt library for your team so everyone is using the same phrasing for the same brand outcomes.",
+      "5. Use Canva Magic Studio's 'Brand Kit' to automatically apply your fonts and colors to every AI-generated design."
+    ],
+    "tradeoffs": "Strict branding restricts the creative exploration that sometimes makes AI output interesting. Periodically allow the model to 'explore' to find new sub-styles.",
+    "recommended_tools": [
+      "Typeface",
+      "Midjourney",
+      "Canva Magic Studio",
+      "Claude",
+      "Jasper"
+    ]
   }
 ]

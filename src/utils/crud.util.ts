@@ -56,16 +56,23 @@ export class MongooseRepository<
       .search(searchFields);
 
     const total = await (features.query.clone() as any).countDocuments();
-    features.paginate();
+
+    // If searching, disregard pagination to search through entire resource
+    const isSearching = !!queryParams.search;
+    if (!isSearching) {
+      features.paginate();
+    }
 
     if (populate) {
       features.query.populate(populate);
     }
 
     const data = await features.query.exec();
-    const page = (queryParams.page as number) * 1 || 1;
-    const limit = (queryParams.limit as number) * 1 || 10;
-    const totalPages = Math.ceil(total / limit);
+
+    // Reset pagination info if searching
+    const page = isSearching ? 1 : (queryParams.page as number) * 1 || 1;
+    const limit = isSearching ? total : (queryParams.limit as number) * 1 || 10;
+    const totalPages = isSearching ? 1 : Math.ceil(total / (limit || 1));
 
     return { data, page, limit, total, totalPages };
   }

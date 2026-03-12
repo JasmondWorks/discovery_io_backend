@@ -101,6 +101,8 @@ const options: swaggerJSDoc.Options = {
             pricing: { type: "string" },
             platform: { type: "string" },
             verified_use_cases: { type: "array", items: { type: "string" } },
+            category: { type: "string" },
+            tags: { type: "array", items: { type: "string" } },
           },
         },
         Workflow: {

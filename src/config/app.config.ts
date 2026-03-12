@@ -18,8 +18,8 @@ const config = {
   ai: {
     openAiApiKey: process.env.OPENAI_API_KEY,
     geminiApiKey: process.env.GEMINI_API_KEY,
-    openRouteApiKey: process.env.OPEN_ROUTE_API_KEY,
-    defaultProvider: process.env.AI_DEFAULT_PROVIDER || "openai",
+    openRouterApiKey: process.env.OPEN_ROUTER_API_KEY,
+    defaultProvider: process.env.AI_DEFAULT_PROVIDER || "openrouter",
   },
   cloudinary: {
     cloudName: process.env.CLOUDINARY_CLOUD_NAME,

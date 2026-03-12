@@ -41,6 +41,26 @@ router.post("/", controller.saveBookmark);
 
 /**
  * @swagger
+ * /bookmarks/{toolId}:
+ *   post:
+ *     summary: Save a catalog tool to user's bookmarks by its ID
+ *     tags: [Bookmarks]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: toolId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       201:
+ *         description: Tool bookmarked successfully
+ */
+router.post("/:toolId", controller.saveBookmark);
+
+/**
+ * @swagger
  * /bookmarks:
  *   get:
  *     summary: Get all saved tools/bookmarks for the authenticated user
