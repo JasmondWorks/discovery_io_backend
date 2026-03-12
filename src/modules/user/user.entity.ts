@@ -37,6 +37,12 @@ export interface IUserEntity {
   passwordChangedAt?: Date;
   refreshToken?: string;
   active: boolean;
+  /**
+   * Set to true once the user completes the onboarding flow (PRD Feature 2).
+   * The frontend uses this flag to decide whether to show the onboarding screen
+   * or redirect to the tools catalog / search.
+   */
+  onboardingCompleted: boolean;
   createdAt: Date;
   updatedAt: Date;
   deletedAt?: Date | null;

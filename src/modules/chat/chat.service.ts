@@ -47,6 +47,11 @@ export class ChatService {
     return session;
   }
 
+  /** Partially update a session document (e.g., status, extracted_intent). */
+  async updateSession(sessionId: string, data: Partial<any>) {
+    return await this.sessionRepo.update(sessionId, data);
+  }
+
   async getMessagesBySession(sessionId: string, userId: string) {
     // Ensure the session belongs to the user
     await this.getSessionById(sessionId, userId);

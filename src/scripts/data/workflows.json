@@ -74,5 +74,347 @@
       "6. Integrate Playwright into your CI/CD pipeline."
     ],
     "recommended_tools": ["Playwright", "GitHub Actions"]
+  },
+  {
+    "title": "AI-Powered SEO Content Strategy",
+    "description": "Using AI agents to research, outline, and optimize long-form content for search ranking.",
+    "complexity": "Intermediate",
+    "use_cases": ["seo_writing", "research", "blog_writing", "marketing"],
+    "steps": [
+      "1. Analyze high-ranking competitors for a target keyword using Perplexity AI.",
+      "2. Extract primary and secondary keywords utilizing Surfer SEO.",
+      "3. Generate a comprehensive content outline with Claude 3.5 Sonnet.",
+      "4. Draft the article sections based on the outline using Jasper.",
+      "5. Use Hemingway Editor to simplify complex sentences and improve readability.",
+      "6. Finalize SEO optimization by matching Surfer SEO's top-suggested terms."
+    ],
+    "recommended_tools": [
+      "Perplexity AI",
+      "Surfer SEO",
+      "Claude",
+      "Jasper",
+      "Hemingway Editor"
+    ]
+  },
+  {
+    "title": "Automated Personal Branding on LinkedIn",
+    "description": "Workflow for consistently generating and scheduling high-quality personal brand content.",
+    "complexity": "Beginner",
+    "use_cases": [
+      "personal_branding",
+      "social_media_writing",
+      "content_repurposing",
+      "marketing"
+    ],
+    "steps": [
+      "1. Identify 5-10 core topics related to your expertise.",
+      "2. Generate 10-15 post ideas using ChatGPT or Claude.",
+      "3. Draft posts based on your favorite ideas utilizing Taplio or Buffer AI.",
+      "4. Repurpose long-form blog content into short LinkedIn posts with Opus Clip or Copy.ai.",
+      "5. Schedule your posts across the week using Buffer or Taplio.",
+      "6. Engage with comments on your posts daily to build community."
+    ],
+    "recommended_tools": [
+      "ChatGPT",
+      "Claude",
+      "Taplio",
+      "Buffer AI",
+      "Opus Clip",
+      "Copy.ai"
+    ]
+  },
+  {
+    "title": "Rapid AI Website Prototyping",
+    "description": "From a simple text description to a published, high-fidelity responsive website.",
+    "complexity": "Intermediate",
+    "use_cases": [
+      "landing_page",
+      "ui_design",
+      "web_design",
+      "frontend_development"
+    ],
+    "steps": [
+      "1. Draft the sitemap and wireframe layout with Relume AI.",
+      "2. Generate the visual design and content using Framer AI or Webflow AI.",
+      "3. Create custom brand imagery with Midjourney or Adobe Firefly.",
+      "4. Refine the UI components and responsiveness within the platform editor.",
+      "5. Connect a custom domain and SEO meta-tags.",
+      "6. Publish the site live to the web."
+    ],
+    "recommended_tools": [
+      "Relume",
+      "Framer AI",
+      "Webflow AI",
+      "Midjourney",
+      "Adobe Firefly"
+    ]
+  },
+  {
+    "title": "Low-Code AI Customer Support Pipeline",
+    "description": "Building a system to automatically handle and resolve common customer queries using AI.",
+    "complexity": "Advanced",
+    "use_cases": [
+      "workflow_automation",
+      "knowledge_management",
+      "summarization",
+      "customer_support"
+    ],
+    "steps": [
+      "1. Centralize your knowledge base and documentation in Notion or a similar tool.",
+      "2. Connect your support channel (e.g. Email, Chat) to Intercom Fin or Zendesk AI.",
+      "3. Train the AI model on your existing FAQ and documentation.",
+      "4. Set up auto-reply rules for common queries like 'pricing' or 'login issues'.",
+      "5. Enable human hand-off for complex tickets or sentiment-based escalations.",
+      "6. Monitor AI resolution rates and update documentation based on common gaps."
+    ],
+    "recommended_tools": ["Notion", "Intercom Fin", "Zendesk AI"]
+  },
+  {
+    "title": "Automated Market Research & Competitive Analysis",
+    "description": "Using AI and web scraping to gather and synthesize market data on competitors.",
+    "complexity": "Intermediate",
+    "use_cases": [
+      "research",
+      "competitive_analysis",
+      "data_extraction",
+      "analytics"
+    ],
+    "steps": [
+      "1. Define the list of competitors and key metrics to track.",
+      "2. Use Browse AI or Apify to scrape competitor product pages and social media daily.",
+      "3. Send the scraped data to a centralized spreadsheet (Rows AI or Google Sheets).",
+      "4. Use Julius AI or ChatGPT to analyze trends, pricing changes, and feature gaps.",
+      "5. Generate a weekly summary report of competitive activity using Claude.",
+      "6. Use the insights to adjust your own product and marketing strategy."
+    ],
+    "recommended_tools": [
+      "Browse AI",
+      "Apify",
+      "Rows AI",
+      "Julius AI",
+      "ChatGPT",
+      "Claude"
+    ]
+  },
+  {
+    "title": "AI Software Testing & Debugging Loop",
+    "description": "Using AI to automatically identify, explain, and fix software bugs.",
+    "complexity": "Intermediate",
+    "use_cases": ["debugging", "testing", "code_review", "code_generation"],
+    "steps": [
+      "1. Identify a bug or a failing test case in your code editor.",
+      "2. Use Cursor's AI chat to explain the bug and suggest a potential fix.",
+      "3. Apply the suggested fix and run tests to verify implementation.",
+      "4. If tests still fail, use Phind or Sourcegraph Cody to research deeper causes.",
+      "5. Use Sweep AI to generate a pull request for the verified fix automatically.",
+      "6. Review the AI-generated PR and merge into the main codebase."
+    ],
+    "recommended_tools": ["Cursor", "Phind", "Sourcegraph Cody", "Sweep AI"]
+  },
+  {
+    "title": "E-commerce Product Launch Workflow",
+    "description": "Using AI to manage the content and marketing for a new product launch.",
+    "complexity": "Intermediate",
+    "use_cases": ["marketing", "ad_creation", "graphic_design", "copywriting"],
+    "steps": [
+      "1. Generate product descriptions and ad copy using Hypotenuse AI or Anyword.",
+      "2. Create high-quality product lifestyle images using Midjourney.",
+      "3. Design launch social posts and email banners with Canva Magic Studio.",
+      "4. Automate launch day social media posts with Buffer or Loomly.",
+      "5. Track launch performance and customer feedback with HubSpot AI or Klaviyo AI.",
+      "6. Adjust ad creative and copy based on initial conversion data."
+    ],
+    "recommended_tools": [
+      "Hypotenuse AI",
+      "Anyword",
+      "Midjourney",
+      "Canva Magic Studio",
+      "Buffer",
+      "Loomly",
+      "HubSpot AI",
+      "Klaviyo AI"
+    ]
+  },
+  {
+    "title": "AI Video Content Factory",
+    "description": "Producing high-quality short-form video content at scale for social media.",
+    "complexity": "Intermediate",
+    "use_cases": [
+      "video_generation",
+      "video_editing",
+      "content_repurposing",
+      "social_media_writing"
+    ],
+    "steps": [
+      "1. Draft video scripts based on high-performing blog posts using ChatGPT.",
+      "2. Generate video clips using Runway Gen-3 or Pika Labs from scripts.",
+      "3. Enhance video quality and add auto-subtitles with Veed.io or CapCut.",
+      "4. Add AI voiceovers to the clips using ElevenLabs.",
+      "5. Use Opus Clip to repurpose the final videos into 5-10 short social clips.",
+      "6. Schedule the clips for multi-channel distribution using Loomly."
+    ],
+    "recommended_tools": [
+      "ChatGPT",
+      "Runway Gen-3 Alpha",
+      "Pika Labs",
+      "Veed.io",
+      "CapCut CC",
+      "ElevenLabs",
+      "Opus Clip",
+      "Loomly"
+    ]
+  },
+  {
+    "title": "Corporate Meeting Productivity Loop",
+    "description": "Turning meetings into actionable documentation and tasks automatically.",
+    "complexity": "Beginner",
+    "use_cases": [
+      "meeting_summarization",
+      "note_taking",
+      "task_management",
+      "productivity"
+    ],
+    "steps": [
+      "1. Record and transcribe team meetings using Otter.ai or Fireflies.ai.",
+      "2. Use Fathom AI to generate high-level meeting summaries and action items.",
+      "3. Feed action items into ClickUp or Taskade for tracking.",
+      "4. Share the summarized meeting notes with the team via Slack or Microsoft Teams.",
+      "5. Use Notion AI to organize and store meeting outcomes in a knowledge base.",
+      "6. Review progress on action items in the next follow-up meeting."
+    ],
+    "recommended_tools": [
+      "Otter.ai",
+      "Fireflies.ai",
+      "Fathom",
+      "ClickUp AI",
+      "Taskade",
+      "Notion AI"
+    ]
+  },
+  {
+    "title": "AI Content Localization Workflow",
+    "description": "Translating and adapting marketing content for global audiences rapidly.",
+    "complexity": "Intermediate",
+    "use_cases": [
+      "video_generation",
+      "localization",
+      "marketing",
+      "content_repurposing"
+    ],
+    "steps": [
+      "1. Draft original marketing copy in English using Jasper or ChatGPT.",
+      "2. Use Claude to translate the copy into multiple target languages with proper tone.",
+      "3. Generate localized marketing videos with AI avatars using HeyGen.",
+      "4. Add localized AI voiceovers and subtitles to the videos using ElevenLabs.",
+      "5. Review localized content with native-speaking team members or agencies.",
+      "6. Launch targeted localized marketing campaigns across global regions."
+    ],
+    "recommended_tools": ["Jasper", "ChatGPT", "Claude", "HeyGen", "ElevenLabs"]
+  },
+  {
+    "title": "AI-Driven Financial Prediction Model",
+    "description": "Using data analytics and scenario planning to forecast business performance.",
+    "complexity": "Advanced",
+    "use_cases": ["analytics", "reporting", "trend_analysis", "research"],
+    "steps": [
+      "1. Consolidate historic financial and sales data into a centralized spreadsheet.",
+      "2. Use Causal to build a dynamic financial model based on key performance drivers.",
+      "3. Use Julius AI to run predictive analysis on the data for future trends.",
+      "4. Create different scenario models (Best, Worst, Average) for planning.",
+      "5. Visualize the predictions and scenarios for stakeholders with Polymer.",
+      "6. Update the model monthly with actual performance data for ongoing accuracy."
+    ],
+    "recommended_tools": ["Causal", "Julius AI", "Polymer"]
+  },
+  {
+    "title": "AI Knowledge Base for Product Teams",
+    "description": "Building a centralized, AI-searchable repository for product documentation.",
+    "complexity": "Intermediate",
+    "use_cases": [
+      "knowledge_management",
+      "research",
+      "documentation",
+      "productivity"
+    ],
+    "steps": [
+      "1. Import all product specs, roadmaps, and research notes into Notion.",
+      "2. Use Notion AI to summarize each document and generate meta-tags.",
+      "3. Enable Glean for enterprise-wide search across Notion and other team tools.",
+      "4. Use Mem to capture and organize ad-hoc meeting notes and observations.",
+      "5. Use ChatGPT or Claude to answer stakeholder questions using the documentation.",
+      "6. Regularly audit and update the knowledge base for accuracy."
+    ],
+    "recommended_tools": ["Notion AI", "Glean", "Mem", "ChatGPT", "Claude"]
+  },
+  {
+    "title": "Low-Code AI Recruitment Pipeline",
+    "description": "Using AI and automation to streamline the hiring and candidate evaluation process.",
+    "complexity": "Intermediate",
+    "use_cases": [
+      "workflow_automation",
+      "summarization",
+      "research",
+      "productivity"
+    ],
+    "steps": [
+      "1. Use ChatGPT to draft comprehensive job descriptions and interview questions.",
+      "2. Automate initial resume screening and ranking with specialized AI tools.",
+      "3. Schedule interview rounds automatically using Reclaim AI or similar calendar tools.",
+      "4. Record and transcribe interviews with Otter.ai for later review.",
+      "5. Use Claude to summarize interview feedback and rank candidates.",
+      "6. Manage the entire process from within your CRM or HR platform."
+    ],
+    "recommended_tools": ["ChatGPT", "Reclaim AI", "Otter.ai", "Claude"]
+  },
+  {
+    "title": "AI Product Prototyping for Founders",
+    "description": "Going from zero to a working product prototype with minimum technical overhead.",
+    "complexity": "Intermediate",
+    "use_cases": ["prototyping", "ui_design", "web_design", "landing_page"],
+    "steps": [
+      "1. Draft the product wireframe and layout using Uizard from a hand-drawn sketch.",
+      "2. Generate the design and initial front-end code with Framer AI or Lovable.",
+      "3. Create your early landing page for waitlist signups using Webflow AI.",
+      "4. Use Leonardo.ai or Midjourney to create stunning marketing visuals.",
+      "5. Iterate on the UI/UX based on early user feedback in Figma with Figma AI.",
+      "6. Use Bolt.new or Lovable to build and deploy your first functional MVP version."
+    ],
+    "recommended_tools": [
+      "Uizard",
+      "Framer AI",
+      "Lovable",
+      "Webflow AI",
+      "Leonardo.ai",
+      "Midjourney",
+      "Figma AI",
+      "Bolt.new"
+    ]
+  },
+  {
+    "title": "Personalized AI Marketing Campaign",
+    "description": "Using AI and automation to deliver highly tailored marketing messages.",
+    "complexity": "Intermediate",
+    "use_cases": [
+      "marketing",
+      "email_marketing",
+      "lead_generation",
+      "analytics"
+    ],
+    "steps": [
+      "1. Gather lead data and behavior through HubSpot AI or Typeform AI.",
+      "2. Segment leads based on interest and activity with Klaviyo AI.",
+      "3. Generate personalized email and ad copy for each segment using Anyword.",
+      "4. Deliver personalized email sequences through Klaviyo or Instantly AI.",
+      "5. Use Adobe Podcast to create short audio personalized messages for high-value leads.",
+      "6. Monitor engagement and conversion metrics across segments daily."
+    ],
+    "recommended_tools": [
+      "HubSpot AI",
+      "Typeform AI",
+      "Klaviyo AI",
+      "Anyword",
+      "Instantly AI",
+      "Adobe Podcast"
+    ]
   }
 ]

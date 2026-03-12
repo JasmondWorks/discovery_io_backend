@@ -7,18 +7,19 @@ export class OpenAIProvider implements IAIProvider {
   private openai: OpenAI;
 
   constructor() {
-    if (!appConfig.ai.openAiApiKey) {
-      throw new AppError("OpenAI API key is not configured", 500);
+    if (!appConfig.ai.openRouterApiKey) {
+      throw new AppError("OpenRouter API key is not configured", 500);
     }
     this.openai = new OpenAI({
-      apiKey: appConfig.ai.openAiApiKey,
+      baseURL: "https://openrouter.ai/api/v1",
+      apiKey: appConfig.ai.openRouterApiKey,
     });
   }
 
   async normalize(input: string, structure: any): Promise<any> {
     try {
       const response = await this.openai.chat.completions.create({
-        model: "gpt-4o-mini", // Cost-effective for normalization
+        model: "google/gemini-2.0-flash-001", // Cost-effective for normalization via OpenRouter
         messages: [
           {
             role: "system",

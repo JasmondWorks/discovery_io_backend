@@ -1,4 +1,5 @@
 import Bookmark from "./models/bookmark.model";
+import Tool from "../tool/models/tool.model";
 import { AppError } from "../../utils/app-error.util";
 import { MongooseRepository } from "../../utils/crud.util";
 
@@ -11,13 +12,30 @@ export class BookmarkService {
 
   async saveTool(userId: string, data: any) {
     try {
-      const bookmark = await this.bookmarkRepo.create({
+      let payload = {
         user_id: userId,
+        tool_id: data.tool_id,
         tool_name: data.tool_name,
         tool_description: data.tool_description,
         tool_url: data.tool_url,
-        tool_id: data.tool_id, // If it comes from curated tools
-      });
+      };
+
+      // If only tool_id is provided, fetch details from the catalog
+      if (data.tool_id && !data.tool_name) {
+        const tool = await Tool.findById(data.tool_id);
+        if (!tool) {
+          throw new AppError("Tool not found in catalog", 404);
+        }
+        payload.tool_name = tool.name;
+        payload.tool_description = tool.description;
+        payload.tool_url = tool.url;
+      }
+
+      if (!payload.tool_name || !payload.tool_url) {
+        throw new AppError("Tool name and URL are required to bookmark.", 400);
+      }
+
+      const bookmark = await this.bookmarkRepo.create(payload);
       return bookmark;
     } catch (error: any) {
       if (error.code === 11000) {

@@ -11,7 +11,7 @@ router.use(protect);
  * @swagger
  * /tools:
  *   get:
- *     summary: Retrieve a list of all tools
+ *     summary: Retrieve a list of all tools (general catalog)
  *     tags: [Tools]
  *     security:
  *       - bearerAuth: []
@@ -30,9 +30,42 @@ router.use(protect);
  *           type: string
  *     responses:
  *       200:
- *         description: A list of tools
+ *         description: A paginated list of all tools
  */
 router.get("/", controller.getTools);
+
+/**
+ * @swagger
+ * /tools/for-me:
+ *   get:
+ *     summary: Personalized tools catalog based on user's professional profile
+ *     description: >
+ *       PRD Feature 3 — Returns tools grouped by skill category, filtered to the
+ *       authenticated user's core role and industry. After completing onboarding,
+ *       users can browse this catalog as an alternative to the AI search flow.
+ *       If the user has no professional profile yet, all tools are returned ungrouped.
+ *     tags: [Tools]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Personalized tools catalog
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 grouped:
+ *                   type: boolean
+ *                 role:
+ *                   type: string
+ *                 industry:
+ *                   type: string
+ *                 catalog:
+ *                   type: object
+ *                   description: Tools grouped by category key
+ */
+router.get("/for-me", controller.getToolsForUser);
 
 /**
  * @swagger

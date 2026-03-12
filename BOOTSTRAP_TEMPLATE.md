@@ -81,7 +81,7 @@ const config = {
     url: process.env.REDIS_URL || "redis://localhost:6379",
   },
   ai: {
-    openRouteApiKey: process.env.OPEN_ROUTE_API_KEY,
+    openRouterApiKey: process.env.OPEN_ROUTE_API_KEY,
     defaultProvider: process.env.AI_DEFAULT_PROVIDER || "openrouter",
   },
 };
@@ -201,12 +201,12 @@ export class OpenRouterProvider implements IAIProvider {
   private openai: OpenAI;
 
   constructor() {
-    if (!appConfig.ai.openRouteApiKey)
+    if (!appConfig.ai.openRouterApiKey)
       throw new AppError("OpenRouter API key is not configured", 500);
 
     this.openai = new OpenAI({
       baseURL: "https://openrouter.ai/api/v1",
-      apiKey: appConfig.ai.openRouteApiKey,
+      apiKey: appConfig.ai.openRouterApiKey,
     });
   }
 

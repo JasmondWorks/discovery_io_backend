@@ -16,7 +16,7 @@ export class AIService {
     this.providers.set("openrouter", new OpenRouterProvider());
     // Add more providers here (e.g., anthropic)
 
-    this.defaultProvider = appConfig.ai.defaultProvider || "openai";
+    this.defaultProvider = appConfig.ai.defaultProvider || "openrouter";
   }
 
   getProvider(name?: string): IAIProvider {
@@ -35,17 +35,51 @@ export class AIService {
     structure: any,
     providerName?: string,
   ): Promise<any> {
-    const pName = providerName || this.defaultProvider;
-    const cacheKey = `${pName}:${input}:${JSON.stringify(structure)}`;
+    const primaryProviderName = providerName || this.defaultProvider;
+    const cacheKey = `${primaryProviderName}:${input}:${JSON.stringify(structure)}`;
 
     if (this.cache.has(cacheKey)) {
       return this.cache.get(cacheKey);
     }
 
-    const provider = this.getProvider(pName);
-    const result = await provider.normalize(input, structure);
+    // List of providers to try in order
+    const providersToTry = [
+      primaryProviderName,
+      ...Array.from(this.providers.keys()).filter(
+        (name) => name !== primaryProviderName,
+      ),
+    ];
 
-    this.cache.set(cacheKey, result);
-    return result;
+    let lastError: any;
+
+    for (const pName of providersToTry) {
+      try {
+        console.log(`AI Normalization: Trying provider '${pName}'...`);
+        const provider = this.getProvider(pName);
+        const result = await provider.normalize(input, structure);
+
+        this.cache.set(cacheKey, result);
+        console.log(`AI Normalization: Success with provider '${pName}'`);
+        return result;
+      } catch (error: any) {
+        lastError = error;
+        console.error(
+          `AI Normalization: Provider '${pName}' failed:`,
+          error.message,
+        );
+
+        // If it's a 404 (provider not found) or not a 429, we might want to stop,
+        // but for robustness we'll try the next one if it's a quota or transient error.
+        const isQuotaError =
+          error.message?.includes("quota") || error.statusCode === 429;
+
+        if (!isQuotaError) {
+          // If it's not a quota error, we still try next provider for reliability
+          continue;
+        }
+      }
+    }
+
+    throw lastError || new AppError("All AI providers failed", 500);
   }
 }

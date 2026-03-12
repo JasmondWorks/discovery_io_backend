@@ -43,8 +43,12 @@ export class UserController {
   });
   public updateProfessionalProfile = catchAsync(
     async (req: any, res: Response) => {
+      // Mark onboarding as complete whenever the professional profile is saved.
+      // This satisfies the PRD Feature 2 requirement: after the onboarding flow
+      // the system redirects users to the tools catalog (onboardingCompleted = true).
       const user = await this.userService.updateUser(req.user.id, {
         professionalProfile: req.body.professionalProfile,
+        onboardingCompleted: true,
       });
       return sendSuccess(
         res,

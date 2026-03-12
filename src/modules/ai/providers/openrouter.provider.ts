@@ -7,12 +7,12 @@ export class OpenRouterProvider implements IAIProvider {
   private openai: OpenAI;
 
   constructor() {
-    if (!appConfig.ai.openRouteApiKey) {
+    if (!appConfig.ai.openRouterApiKey) {
       throw new AppError("OpenRouter API key is not configured", 500);
     }
     this.openai = new OpenAI({
       baseURL: "https://openrouter.ai/api/v1",
-      apiKey: appConfig.ai.openRouteApiKey,
+      apiKey: appConfig.ai.openRouterApiKey,
     });
   }
 

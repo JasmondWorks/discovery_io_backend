@@ -46,6 +46,17 @@ const solutionSchema = new Schema<ISolution>(
   },
 );
 
+// Add text index for search
+solutionSchema.index({
+  issue_title: "text",
+  description: "text",
+  tags: "text",
+  cause_explanation: "text",
+});
+
+// Required by MongoDB to allow $or queries combining $text and other fields
+solutionSchema.index({ tags: 1 });
+
 const Solution = mongoose.model<ISolution>("Solution", solutionSchema);
 
 export default Solution;
